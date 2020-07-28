@@ -5,7 +5,6 @@
 .vagrant
 composer.lock
 package-lock.json
-config/modules.config.production.php
 nbproject/
 vendor/
 node_modules/
