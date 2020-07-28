@@ -7,9 +7,11 @@
  */
 
 return [
+    'Laminas\ZendFrameworkBridge',
     'Laminas\Router',
     'Laminas\Validator',
     'Laminas\Form',
     'Fw',
-    'App'
+    'App',
+    'Site'
 ];
