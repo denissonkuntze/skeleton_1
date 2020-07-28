@@ -1,0 +1,15 @@
+.buildpath
+.project
+.settings
+.idea
+.vagrant
+composer.lock
+package-lock.json
+config/modules.config.production.php
+nbproject/
+vendor/
+node_modules/
+data/
+module/Fw/
+module/AppSamples/
+public/assets.*/
