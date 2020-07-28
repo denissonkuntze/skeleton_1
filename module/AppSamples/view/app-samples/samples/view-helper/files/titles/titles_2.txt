@@ -1,0 +1,1 @@
+echo FwTitles::getTitleType1('Exemplo de título');

@@ -1,0 +1,21 @@
+<page_footer>
+    <hr style="border: solid 1px black;">
+    <table cellspacing="0" style="width: 100%;">
+        <tr>
+            <td style="width: 75%;">
+                <div class="font12">
+                    <?= $data['clinic_address_1'] ?><br>
+                    <?= $data['clinic_address_2'] ?><br>
+                    <?= $data['clinic_address_3'] ?>
+                </div>
+            </td>
+            <td style="width: 25%; text-align: right;">
+                <span class="font9">
+                    Plataforma LuneMed<br>
+                    <?= $data['document']['name'] ?> - Id #<?= $data['document']['id'] ?><br>
+                    Impresso em <?php echo date('d/m/Y H:i:s') ?>
+                </span>
+            </td>
+        </tr>
+    </table>
+</page_footer>

@@ -1,0 +1,102 @@
+<?php
+
+use Fw\Lib\FwHelper;
+use Fw\ViewHelper\FwCodes;
+
+// TAB 1
+
+$tabs = new \Fw\ViewHelper\FwTabs('tabs_1');
+$tabs->setClassTypeHorizontal();
+$tabs->addTab('Informações', 'tab_info');
+$tabs->addTab('Conteúdo AJAX', 'tab_ajax', '/samples/view-helper/fw-tabs/?ajax=1');
+$tabs->addTab('Resumo', 'tab_resume');
+
+$tabs->setContent('tab_info', 'Conteúdo estático. ' . FwHelper::getDateHourNow(true));
+
+$html = $tabs->render();
+
+echo $html . "<br>";
+
+$panelCode = new FwCodes\PanelCode();
+$panelCode->setCodeFile(__DIR__, '/files/tabs/tab_1.txt');
+$panelCode->setInfoEmpty();
+echo $panelCode->render();
+
+// TAB 2
+
+$tabs = new \Fw\ViewHelper\FwTabs('tabs_2');
+$tabs->setClassTypeVertical();
+$tabs->addTab('Informações', 'tab_info');
+$tabs->addTab('Conteúdo AJAX', 'tab_ajax', '/samples/view-helper/fw-tabs/?ajax=1');
+
+$tabs->setContent('tab_info', 'Conteúdo estático. ' . FwHelper::getDateHourNow(true));
+
+$html = $tabs->render();
+
+echo $html . "<br>";
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/tabs/tab_2.txt');
+$panelCode->setInfoEmpty();
+echo $panelCode->render();
+
+// TAB 3
+
+$tabs = new \Fw\ViewHelper\FwTabs('tabs_3');
+$tabs->setClassTypeHorizontalWhite();
+$tabs->addTab('Informações', 'tab_info');
+$tabs->addTab('Conteúdo AJAX', 'tab_ajax');
+
+$tabs->setContentUrl('tab_ajax', '/samples/view-helper/fw-tabs/?ajax=1', true);
+
+$html = $tabs->render();
+
+echo $html . "<br>";
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/tabs/tab_3.txt');
+$panelCode->setInfoEmpty();
+echo $panelCode->render();
+
+// TAB 4
+
+$tabs = new \Fw\ViewHelper\FwTabs('tabs_4');
+$tabs->setClassTypeInfo();
+$tabs->addTab('Informações', 'tab_info');
+$tabs->addTab('Conteúdo AJAX', 'tab_ajax');
+
+$tabs->setContentUrl('tab_ajax', '/samples/view-helper/fw-tabs/?ajax=1', true);
+
+$html = $tabs->render();
+
+echo $html . "<br>";
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/tabs/tab_4.txt');
+$panelCode->setInfoEmpty();
+echo $panelCode->render();
+
+// TAB 5
+
+$tabs = new \Fw\ViewHelper\FwTabs('tabs_5');
+$tabs->setClassTypeModal();
+$tabs->addTab('Informações', 'tab_info');
+$tabs->addTab('Conteúdo AJAX', 'tab_ajax');
+
+$tabs->setContentUrl('tab_ajax', '/samples/view-helper/fw-tabs/?ajax=1', true);
+
+$html = $tabs->render();
+
+echo $html . "<br>";
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/tabs/tab_5.txt');
+$panelCode->setInfoEmpty();
+echo $panelCode->render();
+
+
+

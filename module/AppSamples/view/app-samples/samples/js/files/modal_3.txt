@@ -1,0 +1,9 @@
+$('.confirm').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalConfirmYesNo('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    });
+
+});

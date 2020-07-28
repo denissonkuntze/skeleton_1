@@ -1,0 +1,23 @@
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setId(1);
+$buttons1->addButton('Consultar o procedimento', 'btn-test mb-2');
+
+$btn .= $buttons1->render();
+
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setId(1);
+$buttons1->addButton('Tamanho', 'btn-test btn-sm mb-2');
+
+$btn .= $buttons1->render();
+
+$buttons2 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons2->setId(1);
+$buttons2->addButtonIcon('Imprimir', 'btn-test mb-2', 'icon-file-text2', 'left', 'btn-primary');
+
+$btn .= $buttons2->render();
+
+$buttons3 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons3->setId(1);
+$buttons3->addButtonIcon('Imprimir', 'btn-test mb-2', 'icon-file-text2', 'right', 'btn-success',true);
+
+$btn .= $buttons3->render();

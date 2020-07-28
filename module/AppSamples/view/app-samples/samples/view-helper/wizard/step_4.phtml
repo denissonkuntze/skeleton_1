@@ -1,0 +1,26 @@
+<?php
+
+// FORM ////////////////////////////////////////////////////////////////
+
+$form = new \Fw\Lib\FwForm\FwForm();
+#$form->setAttribute("class", "form-modal");
+
+/* @var \Fw\ViewHelper\FwForm $formRender */
+
+$name = new \Fw\Lib\FwForm\ElementTextArea('address');
+$name->setLabel('Endereço', true);
+$name->setGridColumns(12)->startGridRow()->endGridRow();
+$form->addElement($name);
+
+$surname = new \Fw\Lib\FwForm\ElementText('surname');
+$surname->setLabel('Sobrenome', true);
+$surname->setGridColumns(12)->startGridRow()->endGridRow();
+$form->addElement($surname);
+
+$formRender = $this->ViewFwForm();
+$formRender->setFormTagsOpenClose(false);
+$formRender->setForm($form);
+
+#$form->populateValues($this->data);
+
+echo $formRender->render();

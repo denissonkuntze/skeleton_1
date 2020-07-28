@@ -1,0 +1,13 @@
+public function redirect301Action()
+{
+
+    // para controller
+    return $this->forward()->dispatch('Fw\Controller\IndexController', array(
+        'action' => 'test',
+        'param'  => '1'
+    ));
+
+    // para uma route
+    return $this->redirect()->toRoute('fw-home/fw-test',['action'=>'index']);
+
+}

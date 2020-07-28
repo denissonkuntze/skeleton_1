@@ -1,0 +1,4 @@
+$('.not-sticky').on('click', function (e) {
+    e.preventDefault();
+    fwNotification( 'mensagem', 'success', 'top' );
+});

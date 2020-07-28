@@ -1,0 +1,48 @@
+<?php
+
+$form = $this->form;
+$form->prepare();
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+
+?>
+
+<?php if (isset($this->message)) { ?>
+    <div class="alert alert-info">
+        <?= $this->message ?>
+    </div>
+<?php } ?>
+<?php
+
+$html = '';
+$htmlContainer =  <<<HTML
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                INPUT
+            </div>
+        </div>
+    </div>         
+HTML;
+
+foreach ($form->getElements() AS $element) {
+
+    $type    = $element->getAttribute('type');
+    $options = $element->getOptions();
+
+    if ($element->hasAttribute( 'class' )) {
+        $element->setAttribute( 'class', 'form-control '.$element->getAttribute( 'class' ) );
+    } else {
+        $element->setAttribute( 'class', 'form-control' );
+    }
+
+    $input = $this->formRow( $form->get( $element->getName() ) );
+    $html .= str_replace( 'INPUT', $input, $htmlContainer );
+
+}
+
+echo $html;
+
+?>
+<?= $this->form()->closeTag() ?>

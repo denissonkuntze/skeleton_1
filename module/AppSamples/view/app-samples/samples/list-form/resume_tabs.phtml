@@ -1,0 +1,14 @@
+<?php
+
+use Fw\Lib\FwHelper;
+
+$tabs = new \Fw\ViewHelper\FwTabs();
+#$tabs->setClassTypeVertical();
+$tabs->setRecordId( $this->recordId );
+
+$tabs->addTab( '...', '', FwHelper::formatJsonPretty($this->data) );
+$tabs->addTab( 'Contatos','/customers/resumecontactslist/' );
+
+echo $tabs->render();
+
+

@@ -1,0 +1,31 @@
+$panelButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtons->addButton('Editar', 'btn-edit-tmp');
+$panelButtons->setDropdownButton();
+$panelButtons->addButtonDropdown('Duplicar', 'btn-edit-tmp');
+$panelButtons->addButtonDropdown('Excluir', 'btn-edit-tmp');
+
+$panelHeading1 = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading1->setTitle('Título 3');
+$panelHeading1->setObjectHeadingElements($panelButtons);
+
+$panelBody1 = new \Fw\ViewHelper\Widgets\FwPanelBody();
+$panelBody1->addContentLine('José da Silva');
+$panelBody1->addContentLine('Rua Laranjeiras, 800');
+$panelBody1->addContentLine('48999585693', $panelBody1::MASK_PHONE);
+
+$panelHeading2 = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading2->setTitle('Título adicional');
+
+$panelBody2 = new \Fw\ViewHelper\Widgets\FwPanelBody();
+$panelBody2->addContentDL('Nome', 'José da Silva', 'S', 6);
+$panelBody2->addContentDL('e-Mail', 'jose.silva@gmail.com', 'E', 6);
+$panelBody2->addContentDL('Telefone', '48999887766', 'S', 6, $panelBody2::MASK_PHONE);
+$panelBody2->addContentDL('Telefone adicional', '48999887766', 'E', 6, $panelBody2::MASK_PHONE);
+
+$panel = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel->add($panelHeading1);
+$panel->add($panelBody1);
+$panel->add($panelHeading2);
+$panel->add($panelBody2);
+
+echo $panel->render();

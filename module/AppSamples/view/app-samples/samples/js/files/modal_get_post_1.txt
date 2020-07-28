@@ -1,0 +1,23 @@
+$('.modal-content-view').on('click', function (e)
+{
+
+    e.preventDefault();
+    fwModalDialogAjax('/samples/js/gethtmlview', function ()
+    {
+        actionModalConfirm(1);
+    });
+
+    // outro exemplo
+
+    fwModalDialogAjax(url, function ()
+    {
+
+    }, {}, {
+        title      : 'Sugestão de CID',
+        closable   : false,
+        btnNoLabel : 'Cancelar',
+        btnYesClass: 'hide',
+        size       : 'wide'
+    });
+
+});

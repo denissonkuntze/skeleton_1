@@ -1,0 +1,51 @@
+<?php
+
+$form = $this->form;
+$form->prepare();
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+
+?>
+
+<?php if (isset($this->message)) { ?>
+    <div class="alert alert-info">
+        <?= $this->message ?>
+    </div>
+<?php } ?>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= $this->formRow($form->get('name')) ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= $this->formRow($form->get('email')) ?>
+        </div>
+    </div>
+</div>
+
+<?php if ($form->has('subject')) { ?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <?= $this->formRow($form->get('subject')) ?>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= $this->formRow($form->get('message')) ?>
+        </div>
+    </div>
+</div>
+
+<?= $this->formElement($form->get('security')) ?>
+<?= $this->formElement($form->get('send')) ?>
+
+<?= $this->form()->closeTag() ?>

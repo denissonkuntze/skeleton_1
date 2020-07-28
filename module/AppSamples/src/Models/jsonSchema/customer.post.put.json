@@ -1,0 +1,143 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "code": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        },
+        "type_person": {
+            "type": "string"
+        },
+        "pf_cpf": {
+            "type": "string"
+        },
+        "pf_rg": {
+            "type": "string"
+        },
+        "pf_birth_date": {
+            "type": "string"
+        },
+        "pj_cnpj": {
+            "type": "string"
+        },
+        "pj_razao_social": {
+            "type": "string"
+        },
+        "pj_ie_indicador": {
+            "type": "string"
+        },
+        "pj_ie": {
+            "type": "string"
+        },
+        "pj_ie_isento": {
+            "type": "string"
+        },
+        "pj_im": {
+            "type": "string"
+        },
+        "address": {
+            "type": "object",
+            "properties": {
+                "zipcode": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "additional": {
+                    "type": "string"
+                },
+                "neighborhood": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "billing_address": {
+            "type": "string"
+        },
+        "address_billing": {
+            "type": "object",
+            "properties": {
+                "zipcode": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "additional": {
+                    "type": "string"
+                },
+                "neighborhood": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "phone_1": {
+            "type": "string"
+        },
+        "phone_2": {
+            "type": "string"
+        },
+        "phone_mobile": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "email_financial": {
+            "type": "string"
+        },
+        "contacts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "phone": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": [
+        "name"
+    ],
+    "additionalProperties": false
+}

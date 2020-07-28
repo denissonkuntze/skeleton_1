@@ -1,0 +1,69 @@
+<?php
+
+use Fw\Lib\FwHelper;
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableBorderBottom();
+$table->setTableMarginBottom();
+$table->addColumn('id', 100, 'Conteúdo: '.FwHelper::getDateHourNow());
+
+echo $table->getHTML();
+
+//
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->addColumn('1', 50, 'coluna 1');
+$table->addColumn('2', 50, 'coluna 2');
+
+echo $table->getHTML();
+
+//
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->addColumn('id', 50, 'font size, padding, back color')->setColumnFontSize(25)->setColumnPadding(25)->setColumnBackgroundColor();
+$table->addColumn('name', 50, 'aling right, font color')->setColumnTextAlignRigth()->setColumnFontColor('red')->setColumnFontStrong();
+
+echo $table->getHTML();
+
+//
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->addColumn('id', 33, 'all border')->setColumnTextAlignCenter()->setColumnBorder();
+$table->addColumn('name', 33, 'bottom')->setColumnTextAlignCenter()->setColumnBorderBottom();
+$table->addColumn('address', 33, 'top')->setColumnTextAlignCenter()->setColumnBorderTop();
+
+echo $table->getHTML();
+
+//
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->addColumn('1', 25, 'border left')->setColumnTextAlignCenter()->setColumnBorderLeft();
+$table->addColumn('2', 25, 'border right')->setColumnTextAlignCenter()->setColumnBorderRight();
+$table->addColumn('3', 25, 'no border')->setColumnTextAlignCenter();
+$table->addColumn('4', 25, 'left right')->setColumnTextAlignCenter()->setColumnTextAlignCenter()->setColumnBorderLeftRight();
+
+echo $table->getHTML();
+
+//
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->setTableBorder();
+$table->addColumn('id', 50)->setColumnBorderBottom();
+$table->addColumn('name', 50)->setColumnBorderBottom();
+
+$records[] = ['id' => 10, 'name' => 'TDD 10'];
+$records[] = ['id' => 20, 'name' => 'TDD 20'];
+$records[] = ['id' => 30, 'name' => 'TDD 33'];
+
+foreach ($records AS $value) {
+    $table->addRecord($value);
+}
+
+echo $table->getHTML();
+
+?>

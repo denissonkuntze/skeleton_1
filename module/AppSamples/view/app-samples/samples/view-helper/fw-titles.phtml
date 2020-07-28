@@ -1,0 +1,34 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+use Fw\ViewHelper\FwTitles;
+
+// titles 1 ///////////////////////////////////////////////////////////////////
+
+$sample = FwTitles::getTitleDivider('Exemplo de título');
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/titles/titles_1.txt');
+$panelCode->setInfo('titulo getTitleDivider()<hr>' . "{$sample}");
+echo $panelCode->render();
+
+// titles 2 ///////////////////////////////////////////////////////////////////
+
+$sample = FwTitles::getTitleType1('Exemplo de título');
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/titles/titles_2.txt');
+$panelCode->setInfo('titulo getTitleType1()<hr>' . "{$sample}");
+echo $panelCode->render();
+
+// titles 3 ///////////////////////////////////////////////////////////////////
+
+$sample = FwTitles::getAlert('Exemplo de mensagem de alerta', 'warning');
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/titles/titles_3.txt');
+$panelCode->setInfo('alerta getAlert()<hr>' . "{$sample}");
+echo $panelCode->render();

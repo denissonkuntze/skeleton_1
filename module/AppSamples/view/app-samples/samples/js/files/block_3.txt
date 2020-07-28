@@ -1,0 +1,22 @@
+$('.block-per').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwBlock('... processando ...', 15);
+
+    // como é um exemplo abaixo esta as mudanças de % a cada segundo
+
+    window.setTimeout(function () {
+        $('.progress-bar-success').css('width', '45%');
+    }, 1000);
+
+    window.setTimeout(function () {
+        $('.progress-bar-success').css('width', '75%');
+    }, 2000);
+
+    window.setTimeout(function () {
+        fwCloseBlock();
+    }, 3000);
+
+});

@@ -1,0 +1,18 @@
+<?php
+
+/** @var $form Laminas\Form\Form */
+
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+
+?>
+
+<?php if (isset($this->message)) { ?>
+    <div class="alert alert-info">
+        <?= $this->message ?>
+    </div>
+<?php } ?>

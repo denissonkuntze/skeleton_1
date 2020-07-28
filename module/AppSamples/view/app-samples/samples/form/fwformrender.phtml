@@ -1,0 +1,15 @@
+<?php
+
+$form = $this->form;
+
+$formFw = $this->ViewFwForm();
+$formFw->setForm( $this->form );
+
+?>
+
+    <div class="alert alert-info">
+        <?= $this->messages ?>
+    </div>
+
+<?php
+echo $formFw->render();

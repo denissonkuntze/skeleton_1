@@ -1,0 +1,19 @@
+$('.action-post').on('click', function (e) {
+
+    e.preventDefault();
+    fwActionAjaxPOST( '/samples/js/actionpost', '#form-action-post' );
+
+    // outro exemplo
+
+    var url = '/index/post/';
+
+    fwActionAjaxPOST(url, '.form-exam-new', {
+        block              : false,
+        notificationSuccess: false,
+        callbackSuccess: function ()
+        {
+
+        }
+    });
+
+});

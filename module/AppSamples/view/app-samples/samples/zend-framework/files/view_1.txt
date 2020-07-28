@@ -1,0 +1,17 @@
+public function testAction()
+{
+
+    $data = [ 'nome' => 'José da Silva', 'idade' => 36, 'layout' => time() ];
+
+    $viewModel = new ViewModel();
+    $viewModel->setVariable('test',123);
+    $viewModel->setVariables($data);
+
+    return $viewModel;
+
+    // resgatar as variaveis na view
+
+    $a = $this->test;
+    $b = $this->data['nome'];
+
+}

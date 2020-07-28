@@ -1,0 +1,7 @@
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setId(1);
+$buttons1->addButtonText('Editar', 'btn-test');
+$buttons1->addButtonText('Imprimir', 'btn-test');
+$buttons1->addButtonText('Excluir', 'btn-test');
+
+$btn1 = $buttons1->render();

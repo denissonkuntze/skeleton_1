@@ -1,0 +1,22 @@
+$('.modal-form-callback').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwModalDialogAjaxForm('/samples/js/modalactionpostform', '#contact-form', false, {
+        notificationSuccess: false,
+        callbackSuccess    : function ()
+        {
+            actionModalConfirm(1);
+        }
+    }, {
+        title: 'Editar',
+        size : 'size-wide',
+        closable: true,
+        onShow  : function ()
+        {
+            console.log('modalDialog onShow()');
+        }
+    });
+
+});

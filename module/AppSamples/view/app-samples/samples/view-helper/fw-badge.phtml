@@ -1,0 +1,82 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+use Fw\ViewHelper\FwTitles;
+
+// badge 1 ///////////////////////////////////////////////////////////////////
+
+$html = '';
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste');
+$badge->setClassColor('warning');
+$badge->addClass('mb-2');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste round pill');
+$badge->setClassColor('success');
+$badge->setRound();
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste flat');
+$badge->setClassColor('info');
+$badge->setFlat();
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste block');
+$badge->setBlock();
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste color hex');
+$badge->setColor('#dddddd','#000');
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setClassColor('danger');
+$badge->setMini();
+$badge->addClass('mb-2');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('t');
+$badge->setClassColor('success');
+$badge->setMiniRound('t');
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste tip');
+$badge->setClassColor('success');
+$badge->setTip('clique para ver');
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/badges/badges_1.txt');
+$panelCode->setInfo('Badges<hr>' . "{$html}");
+echo $panelCode->render();
+
+//
+
+$html = '';
+$vars = new \AppSamples\Models\DefaultValues\Customer();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setKeyValues($vars->getValues('status'),'2');
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+#$panelCode->setCodeFile(__DIR__, '/files/badges/badges_1.txt');
+$panelCode->setInfo('Badges<hr>' . "{$html}");
+echo $panelCode->render();

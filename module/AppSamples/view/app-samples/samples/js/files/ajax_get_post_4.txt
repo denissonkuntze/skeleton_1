@@ -1,0 +1,14 @@
+$('.action-content').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwActionAjaxGetContent('/samples/js/gethtml?test=1', '.get_content', {
+        notificationSuccess: false,
+        callbackSuccess    : function ()
+        {
+            actionModalConfirm(1, 2);
+        }
+    });
+
+});

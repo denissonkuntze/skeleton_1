@@ -1,0 +1,44 @@
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste');
+$badge->setClassColor('warning');
+$badge->addClass('mb-2');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste round pill');
+$badge->setClassColor('success');
+$badge->setRound();
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste flat');
+$badge->setClassColor('info');
+$badge->setFlat();
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste block');
+$badge->setBlock();
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste color hex');
+$badge->setColor('#dddddd','#000');
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setClassColor('danger');
+$badge->setMini();
+$badge->addClass('mb-2');
+$html .= $badge->render();
+
+$badge = new \Fw\ViewHelper\Widgets\FwBadge();
+$badge->setLabel('teste tip');
+$badge->setClassColor('success');
+$badge->setTip('clique para ver');
+$badge->addClass('mb-2 d-table');
+$html .= $badge->render();

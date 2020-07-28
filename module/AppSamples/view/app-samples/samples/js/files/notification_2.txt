@@ -1,0 +1,4 @@
+$('.not-sticky').on('click', function (e) {
+    e.preventDefault();
+    fwNotification( 'mensagem de erro estática, a mensagem deve ser fechada', 'danger', null, {'hide': false} );
+});

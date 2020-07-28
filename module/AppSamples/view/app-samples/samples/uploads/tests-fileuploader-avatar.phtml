@@ -1,0 +1,49 @@
+<?php
+?>
+
+<div class="alert alert-info border-0">
+    <ul class="list mb-0">
+        <li>somente arquivos de imagem jpg e png</li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center">
+            <input type="file" name="files" id="files" data-fileuploader-default="/assets.fw/images/default-avatar.png" data-fileuploader-files=''>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function ()
+    {
+
+        var options = {
+            url            : 'tests-fileuploader-2?up=1',
+            callbackSuccess: function (data)
+            {
+
+                console.log('callbackSuccess');
+                console.log(data);
+
+                fwAlert('Upload feito!', 'success');
+
+            },
+            callbackError  : function (data)
+            {
+
+                console.log('callbackError');
+                console.log(data);
+
+                fwAlert('Ops, deu algum erro.', 'error');
+
+            }
+        };
+
+        fwCreateFileUploaderAvatar('#files', options);
+
+    });
+
+</script>

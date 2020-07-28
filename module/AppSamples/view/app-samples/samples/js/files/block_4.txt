@@ -1,0 +1,13 @@
+$('.block-div').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwBlock(null, null, '.block-test');
+
+    window.setTimeout(function ()
+    { // como é um exemplo depois de 2s cancela o bloqueio
+        fwCloseBlock('.block-test');
+    }, 5000);
+
+});

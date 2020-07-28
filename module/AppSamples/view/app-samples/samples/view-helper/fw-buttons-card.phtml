@@ -1,0 +1,154 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+// botoes 1 ///////////////////////////////////////////////////////////////////
+
+$button1 = new \Fw\ViewHelper\FwButtonsCard\FwButton();
+$button1->setLabel('Imprimir documento');
+$button1->setIcon('icon-printer');
+$button1->setDescription('faça a impressão do documento relacionado ao seu pedido');
+#$button1->setIconClass('card-body','<i class="icon-checkmark3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3"></i>');
+$button1->addClass('mb-3');
+#$button1->addAttributeData('id', 999);
+$button1->setTip('clique para imprimir');
+#$button1->setClassThemeSuccess();
+
+$button2 = new \Fw\ViewHelper\FwButtonsCard\FwButton();
+$button2->setLabel('Imprimir documento');
+$button2->setIcon('icon-printer');
+$button2->setDescription('faça a impressão do documento relacionado ao seu pedido');
+$button2->setClassSize( $button1::BTN_SIZE_SMAL );
+$button2->addClass('mb-3');
+$button2->setClassThemeSuccess();
+
+$button3 = new \Fw\ViewHelper\FwButtonsCard\FwButton();
+$button3->setLabel('Salvar');
+$button3->setIcon('icon-file-text3');
+$button3->setDescription('faça a impressão do documento relacionado ao seu pedido');
+$button3->setAlignLeft();
+$button3->addClass('mb-3');
+$button3->setHref('#test');
+
+$button4 = new \Fw\ViewHelper\FwButtonsCard\FwButton();
+$button4->setLabel('Imprimir documento');
+$button4->setIcon('icon-printer');
+$button4->setDescription('faça a impressão do documento relacionado ao seu pedido');
+$button4->addClass('mb-3');
+$button4->setClassThemeFlat();
+
+$buttonCard = new \Fw\ViewHelper\FwButtonsCard\FwButtonsCard();
+$buttonCard->addButton($button1);
+$buttonCard->addButton($button2);
+$buttonCard->addButton($button3);
+$buttonCard->addButton($button4);
+
+?>
+<div class="row">
+    <div class="col-md-4">
+        <?php echo $buttonCard->render(); ?>
+    </div>
+</div>
+<?php
+
+$panelCode = new FwCodes\PanelCode();
+#$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_1.txt');
+$panelCode->setInfo('botão normal');
+echo $panelCode->render();
+
+// botoes em colunas ///////////////////////////////////////////////////////////////////
+
+$button1 = new \Fw\ViewHelper\FwButtonsCard\FwButton();
+$button1->setLabel('Imprimir documento');
+$button1->setIcon('icon-printer');
+$button1->setDescription('faça a impressão do documento relacionado ao seu pedido');
+
+$button2 = new \Fw\ViewHelper\FwButtonsCard\FwButton();
+$button2->setLabel('Imprimir documento');
+$button2->setIcon('icon-printer');
+$button2->setDescription('faça a impressão do documento relacionado ao seu pedido');
+
+$button3 = new \Fw\ViewHelper\FwButtonsCard\FwButton();
+$button3->setLabel('Imprimir documento');
+$button3->setIcon('icon-printer');
+$button3->setDescription('faça a impressão do documento relacionado ao seu pedido');
+
+$buttonCard = new \Fw\ViewHelper\FwButtonsCard\FwButtonsCard();
+$buttonCard->setClass('mb-3');
+$buttonCard->setColumns(4);
+$buttonCard->addButton($button1);
+$buttonCard->addButton($button2);
+$buttonCard->addButton($button3);
+
+?>
+    <div class="row">
+        <div class="col-md-12">
+            <?php echo $buttonCard->render(); ?>
+        </div>
+    </div>
+<?php
+
+$panelCode = new FwCodes\PanelCode();
+#$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_1.txt');
+$panelCode->setInfo('botão em coluna');
+echo $panelCode->render();
+
+// botoes 2 - checkbox //////////////////////////////////////////////////////////
+
+$button1 = new \Fw\ViewHelper\FwButtonsCard\FwButtonCheckbox('check1', 1);
+$button1->setLabel('Usuário');
+$button1->setIcon('icon-user');
+$button1->setDescription('faça a impressão do documento relacionado ao seu pedido');
+#$button1->setIconClass('card-body','<i class="icon-checkmark3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3"></i>');
+$button1->addClass('mb-3');
+#$button1->addAttributeData('id', 999);
+#$button1->setTip('clique para imprimir');
+#$button1->setClassThemeSuccess();
+
+$button2 = new \Fw\ViewHelper\FwButtonsCard\FwButtonCheckbox('check2', 2, true);
+$button2->setLabel('Administrador');
+$button2->setIcon('icon-user-lock');
+$button2->setDescription('faça a impressão do documento relacionado ao seu pedido');
+
+$buttonCard = new \Fw\ViewHelper\FwButtonsCard\FwButtonsCard();
+$buttonCard->addButton($button1);
+$buttonCard->addButton($button2);
+
+$btn1 = $buttonCard->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+#$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_1.txt');
+$panelCode->setInfo('botão checkbox<hr>' . "{$btn1}");
+echo $panelCode->render();
+
+// botoes 3 - radio //////////////////////////////////////////////////////////
+
+$button1 = new \Fw\ViewHelper\FwButtonsCard\FwButtonRadio('radio1', 11);
+$button1->setLabel('Usuário');
+$button1->setIcon('icon-user');
+$button1->addClass('mb-3');
+
+$button2 = new \Fw\ViewHelper\FwButtonsCard\FwButtonRadio('radio1', 22, true);
+$button2->setLabel('Administrador');
+$button2->setIcon('icon-user-lock');
+$button2->addClass('mb-3');
+
+$button3 = new \Fw\ViewHelper\FwButtonsCard\FwButtonRadio('radio1', 33);
+$button3->setLabel('Root');
+$button3->setIcon('icon-user-check');
+
+$buttonCard = new \Fw\ViewHelper\FwButtonsCard\FwButtonsCard();
+$buttonCard->addButton($button1);
+$buttonCard->addButton($button2);
+$buttonCard->addButton($button3);
+
+$btn1 = $buttonCard->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+#$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_1.txt');
+$panelCode->setInfo('botão radio<hr>' . "{$btn1}");
+echo $panelCode->render();
+
+

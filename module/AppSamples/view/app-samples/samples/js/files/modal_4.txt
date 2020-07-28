@@ -1,0 +1,13 @@
+$('.confirm-labels').on('click', function (e)
+{
+
+    e.preventDefault();
+    fwModalConfirm('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    }, {
+        btnYesLabel: 'Concordo',
+        btnNoLabel : 'Não concordo'
+    });
+
+});

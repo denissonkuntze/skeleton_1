@@ -1,0 +1,264 @@
+<?php
+
+use Fw\Lib\FwHelper;
+
+$panelButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtons->addButtonText('Editar', 'btn-edit-tmp');
+$panelButtons->addButtonText('Excluir', 'btn-edit-tmp');
+
+$panelHeading = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading->setTitle('Título 1');
+$panelHeading->setObjectHeadingElements($panelButtons);
+
+$htmlDiv
+    = <<<HTML
+    <div class="alert bg-success">
+        <button type="button" class="close hide" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+        <span class="text-semibold">Well done!</span> You successfully read
+        <a href="#" class="alert-link">this important</a> alert message.
+    </div>
+HTML;
+
+$panelBody = new \Fw\ViewHelper\Widgets\FwPanelBody();
+$panelBody->addContentDL('Nome', 'José da Silva', 'S', 6);
+$panelBody->addContentDL('e-Mail', 'jose.silva@gmail.com', 'E', 6);
+$panelBody->addContentDL('Telefone', '48999887766', 'S', 6, $panelBody::MASK_PHONE);
+$panelBody->addContentDL('Telefone adicional', '48999887766', 'E', 6, $panelBody::MASK_PHONE);
+$panelBody->addContentDivider();
+$panelBody->addContentHTML($htmlDiv);
+$panelBody->addContentLine('José da Silva','',true);
+$panelBody->addContentSpace(10);
+$panelBody->addContentLine('Rua Laranjeiras, 800');
+$panelBody->addContentLine('88080100', $panelBody::MASK_ZIPCODE);
+$panelBody->addContentLine('48999585693', $panelBody::MASK_PHONE);
+
+//
+
+$panelHeading2Buttons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelHeading2Buttons->setDropdownIcon();
+$panelHeading2Buttons->addButtonDropdown('Editar', 'btn-edit-tmp');
+$panelHeading2Buttons->addButtonDropdown('Excluir', 'btn-edit-tmp');
+#$panelHeading2Buttons->addButton('Incluir', 'btn-add-tmp');
+
+$panelHeading2 = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading2->setTitle('Título adicional');
+$panelHeading2->setObjectHeadingElements($panelHeading2Buttons);
+
+$panelBody2 = new \Fw\ViewHelper\Widgets\FwPanelBody();
+$panelBody2->addContentDL('Nome', 'José da Silva', 'S', 6);
+$panelBody2->addContentDL('e-Mail', 'jose.silva@gmail.com', 'E', 6);
+$panelBody2->addContentDL('Telefone', '48999887766', 'S', 6, $panelBody::MASK_PHONE);
+$panelBody2->addContentDL('Telefone adicional', '48999887766', 'E', 6, $panelBody::MASK_PHONE);
+
+// rodape
+
+$panelButtonsFooter = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtonsFooter->setDropdownIcon()->setDropdownUp();
+$panelButtonsFooter->addButtonDropdown('Editar', 'btn-edit-tmp');
+$panelButtonsFooter->addButtonDropdown('Excluir', 'btn-edit-tmp');
+
+$panelFooter = new \Fw\ViewHelper\Widgets\FwPanelFooter();
+$panelFooter->setTitle('Rodape');
+$panelFooter->setObjectHeadingElements($panelButtonsFooter);
+
+$panel = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel->add($panelHeading);
+$panel->add($panelBody);
+$panel->add($panelHeading2);
+$panel->add($panelBody2);
+$panel->add($panelFooter);
+
+$html1 = $panel->getHTML();
+
+// lista com menu
+
+$panelHeading3 = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading3->setTitle('Lista 1');
+
+$txt = FwHelper::getSampleStrings('lorem_ipsum');
+$txt = substr($txt, 0, 160);
+
+$panelBody3 = new \Fw\ViewHelper\Widgets\FwPanelBody();
+
+$panelBody3Buttons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelBody3Buttons->addButtonDropdown('Editar', 'btn-edit-tmp');
+$panelBody3Buttons->addButtonDropdown('Excluir', 'btn-edit-tmp');
+
+// media
+
+$mediaList = new \Fw\ViewHelper\Widgets\FwMediaList();
+$mediaList->setBordered();
+#$mediaList->setLinked();
+
+for ($i = 1; $i <= 3; $i++) {
+
+    $mediaItem = new \Fw\ViewHelper\Widgets\FwMediaListItem();
+    $mediaItem->setBody($txt);
+    $mediaItem->setBodyTitle('Title test', true, true);
+    $mediaItem->setLeft("<i class=\"icon-file-play text-warning-400 icon-2x no-edge-top mt-5\"></i>");
+    #$mediaItem->setRight("<span class=\"label label-primary\">Colleague</span>");
+    $mediaItem->setButton($panelBody3Buttons);
+    #$mediaItem->setLink('lnk-tmp',$i);
+
+    $mediaList->add($mediaItem);
+
+}
+
+$panel2 = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel2->setGrey();
+$panel2->add($panelHeading3);
+$panel2->add($panelBody3);
+$panel2->add($mediaList);
+
+$html2 = $panel2->getHTML();
+
+?>
+<?= $this->panel_1 ?>
+<div class="row">
+    <div class="col-md-6">
+        <?php echo $html1 ?>
+    </div>
+    <div class="col-md-6">
+        <?php echo $html2 ?>
+    </div>
+</div>
+
+<?php
+
+$panelButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtons->addButton('Editar', 'btn-edit-tmp');
+$panelButtons->addButton('Excluir', 'btn-edit-tmp');
+
+$panelHeading = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading->setTitle('Título 2');
+$panelHeading->setObjectHeadingElements($panelButtons);
+
+$panelBody = new \Fw\ViewHelper\Widgets\FwPanelBody();
+$panelBody->addContentDH('Nome', 'José da Silva', 'O');
+$panelBody->addContentDH('e-Mail', 'jose.silva@gmail.com', 'O');
+$panelBody->addContentDH('Telefone', '48999887766', 'O', 12, $panelBody::MASK_PHONE);
+$panelBody->addContentDH('Telefone adicional', '48999887766', 'O', 12, $panelBody::MASK_PHONE);
+$panelBody->addContentDivider();
+#$panelBody->addContentHTML($htmlDiv);
+$panelBody->addContentLine('José da Silva');
+$panelBody->addContentLine('Rua Laranjeiras, 800');
+$panelBody->addContentLine('48999585693', $panelBody::MASK_PHONE);
+
+//
+
+$panelButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtons->addButton('Editar', 'btn-edit-tmp');
+#$panelButtons->addButton('Excluir', 'btn-edit-tmp');
+
+$panel = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel->add($panelHeading);
+$panel->add($panelBody);
+#$panel->add($panelButtons);
+#$panel->add($panelBody2);
+#$panel->add($panelFooter);
+
+$html1 = $panel->getHTML();
+
+// lista com menu
+
+$panelHeading3 = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading3->setTitle('Lista 2');
+
+$txt = FwHelper::getSampleStrings('lorem_ipsum');
+$txt = substr($txt, 0, 160);
+
+$panelBody3 = new \Fw\ViewHelper\Widgets\FwPanelBody();
+
+$panelBody3Buttons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelBody3Buttons->addButtonDropdown('Editar', 'btn-edit-tmp');
+$panelBody3Buttons->addButtonDropdown('Excluir', 'btn-edit-tmp');
+
+// media
+
+$mediaList = new \Fw\ViewHelper\Widgets\FwMediaList();
+#$mediaList->setBordered();
+#$mediaList->setLinked();
+
+for ($i = 1; $i <= 3; $i++) {
+
+    $mediaItem = new \Fw\ViewHelper\Widgets\FwMediaListItem();
+    $mediaItem->setBody($txt);
+    $mediaItem->setBodyTitle('Title test', true, true);
+    #$mediaItem->setLeft("<i class=\"icon-file-play text-warning-400 icon-2x no-edge-top mt-5\"></i>");
+    $mediaItem->setRight("<span class=\"label label-danger\">{$i}</span>");
+    #$mediaItem->setButton($panelBody3Buttons);
+    #$mediaItem->setLink('lnk-tmp',$i);
+
+    $mediaList->add($mediaItem);
+
+}
+
+$panel2 = new \Fw\ViewHelper\Widgets\FwPanel();
+#$panel2->setGrey();
+$panel2->add($panelHeading3);
+$panel2->add($panelBody3);
+$panel2->add($mediaList);
+
+$html2 = $panel2->getHTML();
+
+// feed
+
+$txt  = FwHelper::getSampleStrings('lorem_ipsum');
+$feed = new \Fw\ViewHelper\Widgets\FwFeed();
+
+$datas[1] = date('Y-m-d H:i:s', mktime(date("H"), date("i"), date("s"), date("m"), date("d") - 1, date("Y")));
+$datas[2] = date('Y-m-d H:i:s', mktime(date("H")+2, date("i"), date("s"), date("m"), date("d") - 5, date("Y")));
+$datas[3] = date('Y-m-d H:i:s', mktime(date("H")-10, date("i")-5, date("s"), date("m")-1, date("d") - 18, date("Y")));
+$datas[4] = date('Y-m-d H:i:s', mktime(date("H")+5, date("i")+20, date("s"), date("m")-2, date("d") - 7, date("Y")));
+$datas[5] = date('Y-m-d H:i:s', mktime(date("H")-2, date("i"), date("s"), date("m")-2, date("d") - 7, date("Y")));
+
+for ($i = 1; $i <= 5; $i++) {
+
+    $txt = substr($txt, 0, rand(100, 200));
+
+    #$timestamp  = mt_rand(1, time());
+    $timestamp  = rand( strtotime("Jan 01 2018"), time() );
+    $randomDate = date("Y-m-d H:i:s", $timestamp);
+
+    $feedItem = new \Fw\ViewHelper\Widgets\FwFeedItem();
+    $feedItem->setLog($txt);
+    $feedItem->setDate($randomDate);
+
+    $feed->add($feedItem);
+
+}
+
+$htmlFeed = $feed->getHTML();
+
+// panel com botoes
+
+$panelButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtons->addButton('Editar', 'btn-edit-tmp');
+$panelButtons->setDropdownButton();
+$panelButtons->addButtonDropdown('Duplicar', 'btn-edit-tmp');
+$panelButtons->addButtonDropdown('Excluir', 'btn-edit-tmp');
+
+$panelHeading = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading->setTitle('Título 3');
+$panelHeading->setObjectHeadingElements($panelButtons);
+
+$panel3 = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel3->add($panelHeading);
+$panel3->add($panelBody3);
+
+$html3 = $panel3->getHTML();
+
+?>
+<div class="row">
+    <div class="col-md-3">
+        <?php echo $html1 ?>
+        <?php echo $html3 ?>
+    </div>
+    <div class="col-md-3">
+        <?php echo $html2 ?>
+    </div>
+    <div class="col-md-6">
+        <?php echo $htmlFeed ?>
+    </div>
+</div>
+

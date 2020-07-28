@@ -1,0 +1,10 @@
+$('.not-default').on('click', function (e) {
+    e.preventDefault();
+    fwNotification( 'mensagem de teste' );
+});
+
+// sucesso
+fwNotification( 'mensagem de sucesso', 'success' );
+
+// erro
+fwNotification( 'mensagem de erro', 'error' );

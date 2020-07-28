@@ -1,0 +1,12 @@
+$('.confirm-cancel').on('click', function (e)
+{
+
+    e.preventDefault();
+    fwModalConfirmOrCancel('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    }, {
+        closable: true
+    });
+
+});

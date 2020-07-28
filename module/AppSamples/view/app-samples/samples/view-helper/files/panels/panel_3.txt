@@ -1,0 +1,24 @@
+$panelButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtons->addButton('Editar', 'btn-edit-tmp');
+$panelButtons->addButton('Excluir', 'btn-edit-tmp');
+
+$panelHeading = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading->setTitle('Título 2');
+$panelHeading->setObjectHeadingElements($panelButtons);
+
+$panelBody = new \Fw\ViewHelper\Widgets\FwPanelBody();
+$panelBody->addContentDH('Nome', 'José da Silva', 'O');
+$panelBody->addContentDH('e-Mail', 'jose.silva@gmail.com', 'O');
+$panelBody->addContentDH('Telefone', '48999887766', 'O', 12, $panelBody::MASK_PHONE);
+$panelBody->addContentDH('Telefone adicional', '48999887766', 'O', 12, $panelBody::MASK_PHONE);
+$panelBody->addContentDivider();
+
+$panelBody->addContentLine('José da Silva');
+$panelBody->addContentLine('Rua Laranjeiras, 800');
+$panelBody->addContentLine('48999585693', $panelBody::MASK_PHONE);
+
+$panel = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel->add($panelHeading);
+$panel->add($panelBody);
+
+echo $panel->render();

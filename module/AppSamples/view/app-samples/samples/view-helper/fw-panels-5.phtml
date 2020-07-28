@@ -1,0 +1,65 @@
+<?php
+
+use Fw\Lib\FwHelper;
+use Fw\ViewHelper\FwCodes;
+
+// PANEL 1
+
+$panelButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtons->addButtonText('Editar', 'btn-edit-tmp');
+$panelButtons->addButtonText('Excluir', 'btn-edit-tmp');
+
+$panelHeading = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading->setTitle('Título 1');
+$panelHeading->setObjectHeadingElements($panelButtons);
+
+$htmlDiv = "<div class=\"alert bg-success\">Msg de test</div>";
+
+$contentItem1 = new \Fw\ViewHelper\Widgets\FwPanelContentItem();
+$contentItem1->setLabel('Nome')->setValue('José da silva')->setRowStart()->setColumns(6);
+
+$contentItem2 = new \Fw\ViewHelper\Widgets\FwPanelContentItem();
+$contentItem2->setLabel('e-Mail')->setValue('jose.silva@gmail.com')->setRowEnd()->setColumns(6);
+
+$contentItem3 = new \Fw\ViewHelper\Widgets\FwPanelContentItem();
+$contentItem3->setLabel('Telefone')->setValue('48999887766')->setRowStart()->setColumns(6)->setMaskPhone();
+
+$contentItem4 = new \Fw\ViewHelper\Widgets\FwPanelContentItem();
+$contentItem4->setLabel('Telefone adicional')->setValue('48999887766')->setRowEnd()->setColumns(6)->setMaskPhone();
+
+$panelBody = new \Fw\ViewHelper\Widgets\FwPanelBody();
+$panelBody->addContentItem($contentItem1);
+$panelBody->addContentItem($contentItem2);
+$panelBody->addContentItem($contentItem3);
+$panelBody->addContentItem($contentItem4);
+$panelBody->addContentDivider();
+$panelBody->addContentHTML($htmlDiv);
+$panelBody->addContentLine('José da Silva', '', true);
+$panelBody->addContentSpace(3);
+$panelBody->addContentLine('Rua Laranjeiras, 800');
+$panelBody->addContentLine('88080100', $panelBody::MASK_ZIPCODE);
+$panelBody->addContentLine('48999585693', $panelBody::MASK_PHONE);
+
+// rodape
+
+$panelButtonsFooter = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelButtonsFooter->setDropdownIcon()->setDropdownUp();
+$panelButtonsFooter->addButtonDropdown('Editar', 'btn-edit-tmp');
+$panelButtonsFooter->addButtonDropdown('Excluir', 'btn-edit-tmp');
+
+$panelFooter = new \Fw\ViewHelper\Widgets\FwPanelFooter();
+$panelFooter->setTitle('Rodape');
+$panelFooter->setObjectHeadingElements($panelButtonsFooter);
+
+$panel = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel->add($panelHeading);
+$panel->add($panelBody);
+$panel->add($panelFooter);
+
+echo $panel->render();
+
+#$panelCode = new FwCodes\PanelCode();
+
+#$panelCode->setCodeFile(__DIR__, '/files/panels/panel_1.txt');
+#$panelCode->setInfoEmpty();
+#echo $panelCode->render();

@@ -1,0 +1,20 @@
+<page_header>
+    <table cellspacing="0" style="width: 100%;">
+        <tr>
+            <td style="width: 75%;">
+                <div class="font24 font-bold">
+                    <?= $this->data['clinic_name'] ?>
+                </div>
+                <div class="font12">
+                    <?= $this->data['clinic_subtitle'] ?>
+                </div>
+            </td>
+            <td style="width: 25%; text-align: right;">
+                <?php if (isset($this->data['clinic_logo'])) { ?>
+                <img style="width: 100%;" src="<?= $this->data['clinic_logo'] ?>"><br>
+                <?php } ?>
+            </td>
+        </tr>
+    </table>
+    <hr style="border: solid 1px black;">
+</page_header>

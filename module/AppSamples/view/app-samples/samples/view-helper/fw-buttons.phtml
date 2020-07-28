@@ -1,0 +1,106 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+// botoes 1 ///////////////////////////////////////////////////////////////////
+
+$btn = '';
+
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setId(1);
+$buttons1->addButton('Consultar o procedimento', 'btn-test mb-2');
+
+$btn .= $buttons1->render();
+
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setId(1);
+$buttons1->addButton('Tamanho', 'btn-test btn-sm mb-2');
+
+$btn .= $buttons1->render();
+
+$buttons2 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons2->setId(1);
+$buttons2->addButtonIcon('Imprimir', 'btn-test mb-2', 'icon-file-text2', 'left', 'btn-primary');
+
+$btn .= $buttons2->render();
+
+$buttons3 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons3->setId(1);
+$buttons3->addButtonIcon('Imprimir', 'btn-test mb-2', 'icon-file-text2', 'right', 'btn-success',true);
+
+$btn .= $buttons3->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_1.txt');
+$panelCode->setInfo('botão simples e com ícone<hr>' . "{$btn}");
+echo $panelCode->render();
+
+// botoes 2 ///////////////////////////////////////////////////////////////////
+
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setId(1);
+$buttons1->addButtonText('Editar', 'btn-test');
+$buttons1->addButtonText('Imprimir', 'btn-test');
+$buttons1->addButtonText('Excluir', 'btn-test');
+
+$btn1 = $buttons1->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_2.txt');
+$panelCode->setInfo('botão texto<hr>' . "{$btn1}");
+echo $panelCode->render();
+
+// botoes 3 ///////////////////////////////////////////////////////////////////
+
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setDropdownButton('Ações', 'primary');
+$buttons1->setId(1);
+$buttons1->addButtonDropdown('Editar', 'btn-test');
+$buttons1->addButtonDropdown('divider', '');
+$buttons1->addButtonDropdown('Imprimir', 'btn-test');
+$buttons1->addButtonDropdown('Excluir', 'btn-test');
+
+$btn1 = $buttons1->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_3.txt');
+$panelCode->setInfo('botão dropdown<hr>' . "{$btn1}");
+echo $panelCode->render();
+
+// botoes 4 ///////////////////////////////////////////////////////////////////
+
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setGroupButton();
+$buttons1->setId(1);
+$buttons1->addGroupButton('Editar', 'btn-test');
+$buttons1->addGroupButton('Imprimir', 'btn-test');
+$buttons1->addGroupButton('Excluir', 'btn-test');
+
+$btn1 = $buttons1->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_4.txt');
+$panelCode->setInfo('botão agrupados<hr>' . "{$btn1}");
+echo $panelCode->render();
+
+// botoes 5 ///////////////////////////////////////////////////////////////////
+
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setDropdownIcon();
+$buttons1->setId(1);
+$buttons1->addButtonDropdown('Editar', 'btn-test');
+$buttons1->addButtonDropdown('divider', '');
+$buttons1->addButtonDropdown('Imprimir', 'btn-test');
+$buttons1->addButtonDropdown('Excluir', 'btn-test');
+
+$btn1 = $buttons1->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/buttons/buttons_5.txt');
+$panelCode->setInfo('botão dropdown icon<hr>' . "{$btn1}");
+echo $panelCode->render();

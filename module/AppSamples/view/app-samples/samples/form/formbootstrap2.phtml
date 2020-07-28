@@ -1,0 +1,15 @@
+<?php
+
+$form = $this->form;
+
+$formFw = $this->ViewFwForm();
+$formFw->setForm( $this->form );
+
+// Render the opening tag
+#echo $this->form()->openTag($form);
+echo $formFw->render();
+#echo $this->form()->closeTag();
+
+#echo $this->form()->openTag($form);
+#echo $formFw->renderElement('name');
+#echo $this->form()->closeTag();

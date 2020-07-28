@@ -1,0 +1,38 @@
+<?php
+
+/* @var \Fw\ViewHelper\FwForm $formFw */
+
+$form = $this->form;
+
+$formFw = $this->ViewFwForm();
+$formFw->setForm( $this->form );
+
+echo $this->form()->openTag($form);
+?>
+
+    <div class="alert alert-info">
+        <?= $this->messages ?>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <?= $formFw->renderElement('name'); ?>
+            <?= $formFw->renderElement('email'); ?>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <?= $formFw->renderElement('legend'); ?>
+                    <?= $formFw->renderElement('language'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+<?php
+
+echo $formFw->renderElement('submit');
+
+echo $this->form()->closeTag();

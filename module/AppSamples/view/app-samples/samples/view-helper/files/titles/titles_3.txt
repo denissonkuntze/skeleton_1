@@ -1,0 +1,1 @@
+echo FwTitles::getAlert('Exemplo de mensagem de alerta', 'warning');

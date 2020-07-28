@@ -1,0 +1,46 @@
+<?php
+?>
+
+<div class="alert alert-info border-0">
+    <ul class="list mb-0">
+        <li>somente arquivos de imagem jpg e png</li>
+        <li>vários arquivos</li>
+    </ul>
+</div>
+
+<input type="file" name="files" id="files">
+
+<script type="text/javascript">
+
+    $(document).ready(function ()
+    {
+
+        var options = {
+            limit          : null,
+            extensions     : ['jpg', 'jpeg','png'],
+            url            : 'tests-fileuploader-2?up=1',
+            callbackSuccess: function (data)
+            {
+
+                console.log('callbackSuccess');
+                console.log(data);
+
+                fwAlert('Upload feito!','success');
+
+            },
+            callbackError  : function (data)
+            {
+
+                console.log('callbackError');
+                console.log(data);
+
+                fwAlert('Ops, deu algum erro.', 'error');
+
+            }
+        };
+
+        fwCreateFileUploaderDragDrop('#files', options);
+
+    });
+
+</script>

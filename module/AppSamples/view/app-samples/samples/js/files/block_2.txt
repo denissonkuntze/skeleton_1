@@ -1,0 +1,14 @@
+$('.block-page').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwBlock('... aguarde ...');
+
+    // como é um exemplo depois de 2s cancela o bloqueio
+    window.setTimeout(function ()
+    {
+       fwCloseBlock();
+    }, 2000);
+
+});

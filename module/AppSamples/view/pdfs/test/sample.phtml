@@ -1,0 +1,52 @@
+<table cellspacing="0" style="width: 50%;">
+    <tr>
+        <td style="width: 100%;" class="font16">
+            <div class="font16 font-bold">
+                Solicitação de exames
+            </div>
+            <hr style="border: solid 1px black;">
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+
+<table cellspacing="0" style="width: 50%;">
+    <tr>
+        <td style="width: 100%;">
+            <strong>Nome</strong><br>
+            <?= $data['patient_name'] ?>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+
+<?php foreach ($data['exams'] AS $exam) { ?>
+    <table cellspacing="0" style="width: 100%;">
+        <tr>
+            <td style="width: 100%;">
+                <strong><?= $exam['name'] ?></strong><br>
+            </td>
+        </tr>
+    </table>
+<?php } ?>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table cellspacing="0" style="width: 100%;">
+    <tr>
+        <td style="width: 50%; text-align: center;" class="font10">
+            <hr style="border: solid 1px black;">
+            <span class="font14"><?= $data['clinic_city'] ?>, <?= $data['date'] ?></span>
+        </td>
+        <td style="width: 50%; text-align: center;">
+            <hr style="border: solid 1px black;">
+            <span class="font14"><?= $data['doctor_name'] ?> - CRM <?= $data['doctor_crm'] ?></span>
+        </td>
+    </tr>
+</table>

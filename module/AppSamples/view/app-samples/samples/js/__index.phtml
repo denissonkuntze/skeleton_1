@@ -1,0 +1,627 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                executa uma action GET<br>
+                <span class="text-muted">(retorno deste teste é aleatório para sucesso ou erro)</span>
+                <hr>
+                <a href="#" class="btn btn-default action-get">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.action-get').on('click', function (e) {
+    e.preventDefault();
+    fwActionAjaxGET( '/samples/js/actionget?test=1' );
+});
+</code>
+</pre>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                executa uma action POST<br>
+                <span class="text-muted">informar nome no formulário abaixo</span>
+                <hr>
+                <form id="form-action-post" class="">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="informe um nome">
+                    </div>
+                </form>
+                <hr>
+                <a href="#" class="btn btn-default action-post">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.action-post').on('click', function (e) {
+    e.preventDefault();
+    fwActionAjaxPOST( '/samples/js/actionpost', '#form-action-post' );
+});
+</code>
+</pre>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                executa uma action e se tiver sucesso executa uma função de callback<br>
+                <span class="text-muted">(retorno deste teste é aleatório para sucesso ou erro)</span>
+                <hr>
+                <a href="#" class="btn btn-default action-callback">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.action-callback').on('click', function (e)
+{
+    e.preventDefault();
+    fwActionAjaxGET('/samples/js/actionget?test=1', {
+        notificationSuccess: false,
+        callbackSuccess    : function ()
+        {
+            actionModalConfirm(1, 2);
+        }
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                executa uma action e retorna o conteudo para uma DIV<br>
+                <hr>
+                <a href="#" class="btn btn-default action-content">testar</a>
+                <div class="get_content mt-15"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.action-content').on('click', function (e)
+{
+    e.preventDefault();
+    fwActionAjaxGetContent('/samples/js/gethtml?test=1', '.get_content', {
+        notificationSuccess: false,
+        callbackSuccess    : function ()
+        {
+            actionModalConfirm(1, 2);
+        }
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+<hr>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Abre conteúdo Ajax
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 content-ajax-1">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---! novo !--->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>Modal dialogs</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma mensagem em uma janela<br>
+                <hr>
+                <a href="#" class="btn btn-default alert-msg">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.alert-msg').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalAlert('Esta é uma mensagem de aviso.');
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma mensagem em uma janela modal<br>
+                <span class="text-muted">(para fechar a mensagem somente confirmando no botao)</span>
+                <hr>
+                <a href="#" class="btn btn-default alert-msg-modal">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.alert-msg-modal').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalAlert('Esta é uma mensagem de aviso modal. Para fechar somente confirmando no botão.', {
+        btnYesLabel: 'Entendi',
+        closable   : false
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma mensagem em uma janela e se confirmado executa uma acao de callback<br>
+                <hr>
+                <a href="#" class="btn btn-default confirm">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.confirm').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalConfirmYesNo('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma mensagem em uma janela e muda os labels dos botões <br>
+                <hr>
+                <a href="#" class="btn btn-default confirm-labels">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.confirm-labels').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalConfirm('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    }, {
+        btnYesLabel: 'Concordo',
+        btnNoLabel : 'Não concordo'
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma janela de confirmacao modal <br>
+                <hr>
+                <a href="#" class="btn btn-default confirm-modal">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.confirm-modal').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalConfirm('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    }, {
+        closable: false
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma janela de confirmacao com botoes confirmar e cancelar <br>
+                <hr>
+                <a href="#" class="btn btn-default confirm-cancel">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.confirm-cancel').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalConfirmOrCancel('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    }, {
+        closable: true
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma janela de confirmacao e desabilita o botao yes <br>
+                <hr>
+                <a href="#" class="btn btn-default confirm-disabled-btn">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.confirm-disabled-btn').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalConfirm('Deseja mesmo fazer esta ação?', function ()
+    {
+        actionModalConfirm(1);
+    }, {
+        btnYesClass: 'hide'
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma janela e exibe um conteúdo html vindo de uma action <br>
+                <hr>
+                <a href="#" class="btn btn-default modal-content-html">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.modal-content-html').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalDialogAjax('/samples/js/gethtml', function ()
+    {
+        actionModalConfirm(1);
+    }, {}, {
+        closable   : false,
+        btnYesLabel: 'Aceito!'
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma janela e exibe um conteúdo html vindo de uma view <br>
+                <hr>
+                <a href="#" class="btn btn-default modal-content-view">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.modal-content-view').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalDialogAjax('/samples/js/gethtmlview', function ()
+    {
+        actionModalConfirm(1);
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre uma janela e exibe um conteúdo em json (com delay de 2s) <br>
+                <hr>
+                <a href="#" class="btn btn-default modal-content-json">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.modal-content-json').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalDialogAjax('/samples/js/gethtmljson', function ()
+    {
+        actionModalConfirm(1);
+    }, {
+        block: true
+    }, {
+        btnYesLabel: 'Entendi'
+    });
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre formulário, executa action e retorna json
+                <hr>
+                <a href="#" class="btn btn-default modal-form">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.modal-form').on('click', function (e)
+{
+    e.preventDefault();
+    fwModalDialogAjaxForm('/samples/js/modalactionpostform', '#contact-form', false);
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                abre formulário, executa action e se tiver sucesso
+                executa callback
+                <hr>
+                <a href="#" class="btn btn-default modal-form-callback">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.modal-form-callback').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwModalDialogAjaxForm('/samples/js/modalactionpostform', '#contact-form', false, {
+        notificationSuccess: false,
+        callbackSuccess    : function ()
+        {
+            actionModalConfirm(1);
+        }
+    }, {
+        title: 'Editar',
+        size : 'size-wide',
+        closable: true,
+        onShow  : function ()
+        {
+            console.log('modalDialog onShow()');
+        }
+    });
+
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<!---! novo !--->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>Block</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                bloqueia página<br>
+                <hr>
+                <a href="#" class="btn btn-default block-page">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.block-page').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwBlock();
+
+    // como é um exemplo depois de 2s cancela o bloqueio
+    window.setTimeout(function ()
+    {
+       fwCloseBlock();
+    }, 2000);
+
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                bloqueia página com mensagem<br>
+                <hr>
+                <a href="#" class="btn btn-default block-msg">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.block-page').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwBlock('... processando, aguarde ...');
+
+    // como é um exemplo depois de 2s cancela o bloqueio
+    window.setTimeout(function ()
+    {
+       fwCloseBlock();
+    }, 2000);
+
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                bloqueia página com percentual<br>
+                <hr>
+                <a href="#" class="btn btn-default block-per">testar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.block-per').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwBlock('... processando ...', 15);
+
+    // como é um exemplo abaixo esta as mudanças de % a cada segundo
+
+    window.setTimeout(function () {
+        $('.progress-bar-success').css('width', '45%');
+    }, 1000);
+
+    window.setTimeout(function () {
+        $('.progress-bar-success').css('width', '75%');
+    }, 2000);
+
+    window.setTimeout(function () {
+        fwCloseBlock();
+    }, 3000);
+
+});
+</code>
+</pre>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                bloqueia apenas uma div<br>
+                <hr>
+                <a href="#" class="btn btn-default block-div">testar</a>
+                <hr>
+                <div class="alert alert-info block-test">
+                    div de teste<br>
+                    div de teste<br>
+                    div de teste<br>
+                    div de teste<br>
+                </div>
+                <a href="#" class="block-close">fecha block</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group">
+<code>
+$('.block-div').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    console.log('lock-div');
+
+    fwBlock(null, null, 'block-test');
+
+    window.setTimeout(function ()
+    { // como é um exemplo depois de 2s cancela o bloqueio
+        fwCloseBlock('block-test');
+    }, 5000);
+
+});
+</code>
+</pre>
+    </div>
+</div>

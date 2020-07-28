@@ -1,0 +1,13 @@
+$('.action-callback').on('click', function (e) {
+
+    e.preventDefault();
+
+    fwActionAjaxGET('/samples/js/actionget?test=1', {
+        notificationSuccess: false,
+        callbackSuccess    : function ()
+        {
+            actionModalConfirm(1, 2);
+        }
+    });
+
+});

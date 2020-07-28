@@ -1,0 +1,5 @@
+if ($this->getRequest()->isXmlHttpRequest()) {
+    echo 'Sim, é AJAX';
+} else {
+    echo 'Não é AJAX';
+}

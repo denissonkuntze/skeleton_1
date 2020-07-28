@@ -1,0 +1,62 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_get_post_1.txt');
+$panelCode->setInfo('abre a janela e exibe um conteúdo HTML');
+$panelCode->setButton('modal-content-html');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_get_post_2.txt');
+$panelCode->setInfo('abre formulário, executa action e se tiver sucesso executa callback');
+$panelCode->setButton('modal-form-callback');
+echo $panelCode->render();
+
+
+?>
+<script>
+
+    $('.modal-content-html').on('click', function (e)
+    {
+        e.preventDefault();
+        fwModalDialogAjax('/samples/js/get-html/', function ()
+        {
+            actionModalConfirm(1);
+        }, {}, {
+            closable   : false,
+            btnYesLabel: 'Aceito!'
+        });
+    });
+
+    $('.modal-form-callback').on('click', function (e)
+    {
+
+        e.preventDefault();
+
+        fwModalDialogAjaxForm('/samples/js/modal-post-form/', '.form-modal', false, {
+            notificationSuccess: false,
+            callbackSuccess    : function ()
+            {
+                actionModalConfirm(1);
+            }
+        }, {
+            title: 'Editar',
+            size : 'size-normal',
+            closable: true,
+            onShow  : function ()
+            {
+                console.log('modalDialog onShow()');
+            }
+        });
+
+    });
+
+    function actionModalConfirm(param1, param2)
+    {
+        fwNotification('Se esta vendo esta mensagem é porque esta executando função js de callBack ...', 'info');
+        console.log('executando: ' + param1 + ' / ' + param2);
+    }
+
+</script>

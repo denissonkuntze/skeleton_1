@@ -1,0 +1,18 @@
+<h2>
+    Legal ... renderizando o conteúdo em uma view
+</h2>
+<ul>
+    <?php foreach ( $this->data AS $key => $val ) { ?>
+        <li><?= $val[ 'id' ] . ' / ' . $val[ 'name' ] ?></li>
+    <?php } ?>
+</ul>
+<?php if ($this->paginator) { ?>
+    <?php
+
+    $html = $this->paginationControl($this->paginatorView);
+    $html = str_replace( "#tableform", $this->id, $html );
+
+    echo $html;
+
+    ?>
+<?php } ?>

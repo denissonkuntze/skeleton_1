@@ -1,0 +1,9 @@
+public function changeviewAction()
+{
+
+    $viewModel = new ViewModel();
+    $viewModel->setTemplate('app-samples/samples/basic/outraview');
+
+    return $viewModel;
+
+}

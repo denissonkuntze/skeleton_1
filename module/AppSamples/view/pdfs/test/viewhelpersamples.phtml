@@ -1,0 +1,155 @@
+<?php
+
+use Fw\Lib\FwHelper;
+
+/*
+// TITULO /////////////////////////////////////////////////////////////////////////////////////////
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->setTableBorderBottom(2);
+$table->addColumn('title', 50, 'Exemplo de título ' . FwHelper::getDate())->setColumnPadding(0)->setColumnFontSize(21)->setColumnFontStrong()->addColumnStyle('padding-bottom', '5px');
+
+echo $table->getHTML();
+echo '<br><br><br>';
+
+// SUB-TITULO /////////////////////////////////////////////////////////////////////////////////////
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->addColumn('title', 100, 'Exemplo de título ' . FwHelper::getDateHourNow())->setColumnPadding(0)->setColumnFontSize(16)->setColumnFontStrong();
+
+echo $table->getHTML();
+echo '<br><br><br>';
+
+// TABELA CONTEUDO 1 //////////////////////////////////////////////////////////////////////////////
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->setTableBorder(1, 'grey');
+
+$table->addColumn('name', 20)->setColumnBorderBottom(1, 'grey');
+$table->addColumn('content', 80)->setColumnBorderBottom(1, 'grey');
+
+$records[] = ['name' => 'Descrição', 'content' => 'TDD 10'];
+$records[] = ['name' => 'CID', 'content' => 'TDD 20'];
+$records[] = ['name' => 'Indicação', 'content' => 'TDD 33'];
+
+foreach ($records AS $value) {
+    $table->addRecord($value);
+}
+
+echo $table->getHTML();
+echo '<br><br><br>';
+
+unset($records);
+
+// TABELA CONTEUDO 2 //////////////////////////////////////////////////////////////////////////////
+
+// cabecalho
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableBorderHeader();
+$table->setTableBackgroundColor();
+$table->setTableDefaultFontSize(11);
+
+$table->addColumn('1', 60, 'Nome')->setColumnFontStrong();
+$table->addColumn('2', 30, 'Descrição')->setColumnFontStrong();
+$table->addColumn('3', 10, 'Qtd')->setColumnFontStrong()->setColumnTextAlignCenter();
+
+echo $table->getHTML();
+
+// linhas de conteudo
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+$table->setTableBorderHeader();
+
+$table->addColumn('name', 60)->setColumnBorderBottom(1, 'grey');
+$table->addColumn('content', 30)->setColumnBorderBottom(1, 'grey');
+$table->addColumn('qtd', 10)->setColumnTextAlignCenter()->setColumnBorderBottom(1, 'grey');
+
+$records[] = ['name' => 'Descrição', 'content' => 'TDD 10', 'qtd' => '1'];
+$records[] = ['name' => 'CID', 'content' => 'TDD 10', 'qtd' => '1'];
+$records[] = ['name' => 'Indicação', 'content' => 'TDD 33', 'qtd' => '1'];
+
+foreach ($records AS $value) {
+    $table->addRecord($value);
+}
+
+echo $table->getHTML();
+echo '<br><br><br>';
+
+unset($records);
+*/
+
+// TABELA CONTEUDO 3 //////////////////////////////////////////////////////////////////////////////
+
+// cabecalho
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableDefaultFontSize(11);
+$table->setTableBorderTop();
+$table->setTableBorderBottom();
+$table->setTableBackgroundColor();
+
+$table->addColumn('1', 60, 'Nome');
+$table->addColumn('2', 30, 'Descrição');
+$table->addColumn('3', 10, 'Qtd')->setColumnTextAlignCenter();
+
+echo $table->getHTML();
+
+// linhas de conteudo
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+
+$table->addColumn('name', 60)->setColumnBorderBottom(1, 'grey');
+$table->addColumn('content', 30)->setColumnBorderBottom(1, 'grey');
+$table->addColumn('qtd', 10)->setColumnTextAlignCenter()->setColumnBorderBottom(1, 'grey');
+
+$records[] = ['name' => 'Descrição', 'content' => 'TDD 10', 'qtd' => '1'];
+$records[] = ['name' => 'CID', 'content' => 'TDD 10', 'qtd' => '1'];
+$records[] = ['name' => 'Indicação', 'content' => 'TDD 33', 'qtd' => '1'];
+$records[] = ['name' => 'Informação', 'content' => 'TDD 33', 'qtd' => '1'];
+
+foreach ($records AS $key => $value) {
+
+    $table->addRecord($value);
+
+    if ($key == 2) {
+        $table->addRecordHTML(3, "<div style='margin-left:150px; margin-bottom: 15px; margin-top: 1px; background-color: #fdfbbe; padding: 5px; font-size:10px;'>texto em html</div>", '', 'padding: 0px; border-bottom: 1px solid grey;');
+    }
+
+}
+
+echo $table->getHTML();
+echo '<br><br><br>';
+
+unset($records);
+
+// BOX 1 //////////////////////////////////////////////////////////////////////////////////////////
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+
+$table->addColumn('col1', 33, '<strong>Paciente</strong><br>' . $data['patient_name']);
+$table->addColumn('col2', 34, '<strong>Médico</strong><br>' . $data['doctor_name'] . '<br>' . $data['doctor_crm']);
+$table->addColumn('col3', 33, '<strong>Data</strong><br>' . $data['date']);
+
+echo $table->getHTML();
+echo '<br><br><br>';
+
+// BOX 2 //////////////////////////////////////////////////////////////////////////////////////////
+
+$table = new \Fw\ViewHelper\FwPrintHtmlPDF();
+$table->setTableMarginBottom();
+
+$table->addColumn('col1', 45, '<hr>' . $data['doctor_name'])->setColumnTextAlignCenter();
+$table->addColumn('col2', 10, '');
+$table->addColumn('col3', 45, '<hr>.' . $data['clinic_city'])->setColumnTextAlignCenter();
+
+echo $table->getHTML();
+echo '<br><br><br>';
+
+?>

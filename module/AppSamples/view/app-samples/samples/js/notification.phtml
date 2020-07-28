@@ -1,0 +1,59 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/notification_1.txt');
+$panelCode->setInfo('notificação simples');
+$panelCode->setButton('noty-1');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/notification_2.txt');
+$panelCode->setInfo('notificação estática');
+$panelCode->setButton('noty-2');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/notification_3.txt');
+$panelCode->setInfo('notificação no topo');
+$panelCode->setButton('noty-3');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/notification_4.txt');
+$panelCode->setInfo('fechar todas as notificações');
+$panelCode->setButton('noty-4');
+echo $panelCode->render();
+
+?>
+
+<script>
+
+    $('.noty-1').on('click', function (e)
+    {
+        fwNotification('mensagem de sucesso');
+        fwNotification('mensagem de erro', 'error');
+    });
+
+    $('.noty-2').on('click', function (e)
+    {
+        fwNotification('mensagem de erro estática, a mensagem deve ser fechada', 'danger', null, {'hide': false});
+    });
+
+    $('.noty-3').on('click', function (e)
+    {
+        fwNotification('mensagem', 'success', 'top');
+    });
+
+    $('.noty-4').on('click', function (e)
+    {
+
+        fwNotification('vai fechar em 2 segundos');
+
+        setTimeout(function ()
+        {
+            fwCloseNotifications();
+        }, 2000);
+
+    });
+
+</script>

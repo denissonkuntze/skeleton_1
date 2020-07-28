@@ -1,0 +1,29 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/ajax_get_post_1.txt');
+$panelCode->setInfo('executa uma action GET');
+#$panelCode->setComment('retorno deste teste é aleatório para sucesso ou erro');
+#$panelCode->setButton('ajax-get-post-1');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/ajax_get_post_2.txt');
+$panelCode->setInfo('executa uma action POST, o segundo parametro é a class ou id do formulário');
+#$panelCode->setComment('retorno deste teste é aleatório para sucesso ou erro');
+#$panelCode->setButton('ajax-get-post-2');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/ajax_get_post_3.txt');
+$panelCode->setInfo('executa uma action e se tiver sucesso executa uma função de callback');
+#$panelCode->setComment('retorno deste teste é aleatório para sucesso ou erro');
+#$panelCode->setButton('ajax-get-post-2');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/ajax_get_post_4.txt');
+$panelCode->setInfo('executa uma action e retorna o conteudo para uma DIV');
+#$panelCode->setComment('retorno deste teste é aleatório para sucesso ou erro');
+#$panelCode->setButton('ajax-get-post-2');
+echo $panelCode->render();

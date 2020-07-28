@@ -1,0 +1,68 @@
+<?php
+
+/* @var \Fw\ViewHelper\FwForm $formFw */
+
+$form = new \Fw\Lib\FwForm\FwForm();
+$form->setAttribute('class', 'form-post');
+
+$search = new \Fw\Lib\FwForm\ElementSearch('search', '', 'informe o nome da TAG');
+$search->setMinInputLenght(2);
+$search->setJsOnSelect('onSelectTag');
+#$search->setDropdownParent('.form-post');
+$search->setGridColumns()->startGridRow()->endGridRow();
+$search->setDisabledFormGroup();
+$form->addElement($search);
+
+//
+
+$html = new \Fw\Lib\FwForm\ElementHtml('hr','<hr>');
+$form->addElement($html);
+
+$dataOptionsSelected = [1 => 'TAG1', 3 => 'TAG3'];
+
+$searchTags = new \Fw\Lib\FwForm\ElementTags('search_tags', '', 'informe o nome da TAG');
+$searchTags->setMinInputLenght(2);
+$searchTags->setOptionsPreSelected($dataOptionsSelected);
+$searchTags->setJsOnSelect('onSelectTag');
+$searchTags->setGridColumns()->startGridRow()->endGridRow();
+$searchTags->setDisabledFormGroup();
+$form->addElement($searchTags);
+
+$data = ['search_tags' => [3, 1]];
+
+#$form->populateValues($data);
+
+$formFw = $this->ViewFwForm();
+$formFw->setForm($form);
+
+echo $formFw->render();
+
+?>
+
+<hr>
+<button class="btn btn-default btn-post">enviar</button>
+
+<script>
+
+    fwLFReady();
+
+    $('body').on('click', '.btn-post', function (e)
+    {
+
+        e.preventDefault();
+
+        var url = '';
+
+        console.log(url);
+
+        fwActionAjaxPOST(url, '.form-post');
+
+    });
+
+    function onSelectTag(data, type)
+    {
+        console.log(type);
+        console.log(data);
+    }
+
+</script>

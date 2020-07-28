@@ -1,0 +1,8 @@
+$tabs = new \Fw\ViewHelper\FwTabs('tabs_5');
+$tabs->setClassTypeModal();
+$tabs->addTab('Informações', 'tab_info');
+$tabs->addTab('Conteúdo AJAX', 'tab_ajax');
+
+$tabs->setContentUrl('tab_ajax', '/samples/view-helper/fw-tabs/?ajax=1', true);
+
+$html = $tabs->render();

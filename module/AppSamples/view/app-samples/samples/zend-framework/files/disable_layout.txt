@@ -1,0 +1,11 @@
+public function disablelayoutAction()
+{
+
+    $layout = FwLayout::getInstance();
+    $layout->setLayoutDisable();
+
+    $viewModel = new ViewModel();
+
+    return $viewModel;
+
+}

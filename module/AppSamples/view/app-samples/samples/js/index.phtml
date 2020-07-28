@@ -1,0 +1,9 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/on_change.txt');
+$panelCode->setInfo('onChange');
+echo $panelCode->render();

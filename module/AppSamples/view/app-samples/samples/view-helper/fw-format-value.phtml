@@ -1,0 +1,28 @@
+<?php
+
+use Fw\Lib\FwHelper;
+use Fw\ViewHelper\FwCodes;
+
+$data['date']     = \Fw\ViewHelper\FwFormatValue::getFormatToDateBr(date('Y-m-d'));
+$data['datetime'] = \Fw\ViewHelper\FwFormatValue::getFormatToDateTimeBr(date('Y-m-d H:i:s'));
+$data['phone_1']  = \Fw\ViewHelper\FwFormatValue::getFormatToPhone('483344556');
+$data['phone_2']  = \Fw\ViewHelper\FwFormatValue::getFormatToPhone('4833445566');
+$data['phone_3']  = \Fw\ViewHelper\FwFormatValue::getFormatToPhone('48334455668');
+$data['cpf']      = \Fw\ViewHelper\FwFormatValue::getFormatToCPForCNPJ('65792162042');
+$data['cnpj']     = \Fw\ViewHelper\FwFormatValue::getFormatToCPForCNPJ('32631382000148');
+$data['zipcode']  = \Fw\ViewHelper\FwFormatValue::getFormatToZipCode('88080100');
+$data['number']   = \Fw\ViewHelper\FwFormatValue::getFormatToNumber('1234.56');
+$data['money']    = \Fw\ViewHelper\FwFormatValue::getFormatToMoney('1234.56');
+
+$html = '';
+foreach ($data AS $key => $val) {
+    $html .= "{$key}: {$val}<br>";
+}
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/format-value/format_1.txt');
+$panelCode->setInfo('formata valores<hr>' . $html);
+echo $panelCode->render();
+
+

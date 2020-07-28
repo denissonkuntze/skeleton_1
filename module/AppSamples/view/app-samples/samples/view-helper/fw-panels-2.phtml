@@ -1,0 +1,48 @@
+<?php
+
+use Fw\Lib\FwHelper;
+use Fw\ViewHelper\FwCodes;
+
+// PANEL 2
+
+$panelHeading = new \Fw\ViewHelper\Widgets\FwPanelHeading();
+$panelHeading->setTitle('Lista 1');
+
+$txt = FwHelper::getSampleStrings('lorem_ipsum');
+$txt = substr($txt, 0, 160);
+
+$panelBody = new \Fw\ViewHelper\Widgets\FwPanelBody();
+
+$panelBodyButtons = new \Fw\ViewHelper\Widgets\FwButtons();
+$panelBodyButtons->addButtonDropdown('Editar', 'btn-edit-tmp');
+$panelBodyButtons->addButtonDropdown('Excluir', 'btn-edit-tmp');
+
+// media
+
+$mediaList = new \Fw\ViewHelper\Widgets\FwMediaList();
+$mediaList->setBordered();
+
+for ($i = 1; $i <= 3; $i++) {
+
+    $mediaItem = new \Fw\ViewHelper\Widgets\FwMediaListItem();
+    $mediaItem->setBody($txt);
+    $mediaItem->setBodyTitle('Title test', true, true);
+    $mediaItem->setLeft("<i class=\"icon-file-play text-warning-400 icon-2x no-edge-top mt-5\"></i>");
+    $mediaItem->setButton($panelBodyButtons);
+    $mediaList->add($mediaItem);
+
+}
+
+$panel = new \Fw\ViewHelper\Widgets\FwPanel();
+$panel->setGrey();
+$panel->add($panelHeading);
+$panel->add($panelBody);
+$panel->add($mediaList);
+
+echo $panel->render();
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/panels/panel_2.txt');
+$panelCode->setInfoEmpty();
+echo $panelCode->render();

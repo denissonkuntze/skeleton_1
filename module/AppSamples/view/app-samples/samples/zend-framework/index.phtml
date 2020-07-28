@@ -1,0 +1,71 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/getpost.txt');
+$panelCode->setInfo('detecta se a requisição é GET ou POST');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/view_1.txt');
+$panelCode->setInfo('enviar valores para view e para o layout');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/detect_ajax.txt');
+$panelCode->setInfo('detectar se a requisição é AJAX');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/redirect_url.txt');
+$panelCode->setInfo('redirecionar para url');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/redirect_301.txt');
+$panelCode->setInfo('redirecionar 301');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/redirect_controller.txt');
+$panelCode->setInfo('redirecionar para controler e route');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/detect_env.txt');
+$panelCode->setInfo('detectar enviroment (desenvolvimento, homologação e produção)');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/disable_view.txt');
+$panelCode->setInfo('desligar a view');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/disable_layout.txt');
+$panelCode->setInfo('desligar o layout');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/change_view.txt');
+$panelCode->setInfo('alterar a view para outro template');
+echo $panelCode->render();
+
+?>
+
+<script>
+
+    $('body').on('click', '.btn-ajax', function (e)
+    {
+
+        e.preventDefault();
+
+        $.ajax({
+            url     : 'basic/detectajax',
+            type    : 'POST',
+            cache   : false,
+            data    : $('#formAjax').serialize(),
+            complete: function (jqXHR, textStatus)
+            {
+
+                $('.panel-retorno').empty().html(jqXHR.responseText);
+
+            }
+        });
+
+    });
+
+</script>

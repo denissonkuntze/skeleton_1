@@ -11,5 +11,4 @@ vendor/
 node_modules/
 data/
 module/Fw/
-module/AppSamples/
 public/assets.*/

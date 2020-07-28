@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <?= $this->form_upload ?>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var callbackUpload = function (fileUpload, object, data)
+    {
+
+        console.log('depois do upload');
+        //console.log(fileUpload);
+        console.log(data);
+
+        //fileUpload.fileinput('disable');
+        //fileUpload.fileinput('clear');
+        //fileUpload.fileinput('enable');
+        //fileUpload.fileinput('reset');
+
+    };
+
+</script>

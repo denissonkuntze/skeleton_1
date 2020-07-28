@@ -1,0 +1,24 @@
+var verifyOnChange = function (seletor, id)
+{
+
+    if (id === 'status') {
+
+        if ($(seletor).val() === '1') {
+            $('.div-info').addClass('hide');
+        }
+        else {
+            $('.div-info').removeClass('hide');
+        }
+
+    }
+
+};
+
+$('#status').each(function (e)
+{
+    verifyOnChange(this, 'status');
+    $(this).change(function (e) {
+        verifyOnChange(this, 'status');
+    });
+
+});

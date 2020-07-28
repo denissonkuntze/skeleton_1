@@ -1,0 +1,40 @@
+<?php
+echo 'Classe: \Fw\ViewHelper\FwLinkTo' . '<hr>';
+?>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+<?php
+
+$linkTo = new \Fw\ViewHelper\FwLinkTo();
+$linkTo->setDataId('123');
+$linkTo->setLinkToId('customer');
+$linkTo->setLabel('label do link');
+$linkTo->setLinkToUrl('/admin/customers/');
+$linkTo->setOpenInSelf();
+#$linkTo->setTypeViewButton();
+#$linkTo->setButtonClass('bg-grey');
+$linkTo->setModalSize($linkTo::MODAL_SIZE_LARGE);
+$linkTo->setModalTitle('teste de titulo');
+#$linkTo->setButtonSize($linkTo::BUTTON_SIZE_MICRO);
+#$linkTo->setButtonBlock();
+#$linkTo->setButtonIcon('icon-menu7',true);
+$linkTo->setMessageTip('Clique para ver!');
+$linkTo->setJavascriptCallbackSuccess('jsTest');
+$linkTo->setModalFormClass();
+
+echo $linkTo->render();
+
+?>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+<pre class="language-php content-group"><code>
+$date     = \Fw\ViewHelper\FwFormatValue::getFormatToDateBr(date('Y-m-d'));
+$document = \Fw\ViewHelper\FwFormatValue::getFormatToCPForCNPJ('65792162042');
+</code></pre>
+    </div>
+</div>
+<hr>

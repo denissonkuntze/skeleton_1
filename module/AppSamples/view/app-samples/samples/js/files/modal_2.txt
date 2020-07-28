@@ -1,0 +1,11 @@
+$('.alert-msg-modal').on('click', function (e)
+{
+
+    e.preventDefault();
+
+    fwModalAlert('Esta é uma mensagem de aviso modal. Para fechar somente confirmando no botão.', {
+        btnYesLabel: 'Entendi',
+        closable   : false
+    });
+
+});

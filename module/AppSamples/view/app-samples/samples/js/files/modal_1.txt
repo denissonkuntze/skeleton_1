@@ -1,0 +1,7 @@
+$('.alert-msg').on('click', function (e)
+{
+
+    e.preventDefault();
+    fwModalAlert('Esta é uma mensagem de aviso.');
+
+});

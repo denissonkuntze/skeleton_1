@@ -1,0 +1,102 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_1.txt');
+$panelCode->setInfo('abre uma mensagem em uma janela');
+$panelCode->setButton('alert-msg');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_2.txt');
+$panelCode->setInfo('abre uma mensagem em uma janela modal');
+$panelCode->setButton('alert-msg-modal');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_3.txt');
+$panelCode->setInfo('abre uma mensagem em uma janela e se confirmado executa uma acao de callback');
+$panelCode->setButton('modal-confirm');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_4.txt');
+$panelCode->setInfo('abre uma mensagem em uma janela e muda os labels dos botões');
+$panelCode->setButton('modal-labels');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_5.txt');
+$panelCode->setInfo('abre uma janela de confirmacao com botoes confirmar e cancelar');
+$panelCode->setButton('modal-confirm-cancel');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/modal_6.txt');
+$panelCode->setInfo('abre uma janela de confirmacao e desabilita o botao yes');
+$panelCode->setButton('modal-confirm-disabled-btn');
+echo $panelCode->render();
+
+?>
+<script>
+
+    $('.alert-msg').on('click', function (e)
+    {
+        e.preventDefault();
+        fwModalAlert('Esta é uma mensagem de aviso.');
+    });
+
+    $('.alert-msg-modal').on('click', function (e)
+    {
+        e.preventDefault();
+        fwModalAlert('Esta é uma mensagem de aviso modal. Para fechar somente confirmando no botão.', {
+            btnYesLabel: 'Entendi',
+            closable   : false
+        });
+    });
+
+    $('.modal-confirm').on('click', function (e)
+    {
+        e.preventDefault();
+        fwModalConfirmYesNo('Deseja mesmo fazer esta ação?', function ()
+        {
+            actionModalConfirm(1);
+        });
+    });
+
+    $('.modal-labels').on('click', function (e)
+    {
+        e.preventDefault();
+        fwModalConfirm('Deseja mesmo fazer esta ação?', function ()
+        {
+            actionModalConfirm(1);
+        }, {
+            btnYesLabel: 'Concordo',
+            btnNoLabel : 'Não concordo'
+        });
+    });
+
+    $('.modal-confirm-cancel').on('click', function (e)
+    {
+        e.preventDefault();
+        fwModalConfirmOrCancel('Deseja mesmo fazer esta ação?', function ()
+        {
+            actionModalConfirm(1);
+        }, {
+            closable: true
+        });
+    });
+
+    $('.modal-confirm-disabled-btn').on('click', function (e)
+    {
+        e.preventDefault();
+        fwModalConfirm('Deseja mesmo fazer esta ação?', function ()
+        {
+            actionModalConfirm(1);
+        }, {btnYesClass: 'hide'});
+    });
+
+    function actionModalConfirm(param1, param2)
+    {
+        fwNotification('Se esta vendo esta mensagem é porque esta executando função js de callBack ...', 'info');
+        console.log('executando: ' + param1 + ' / ' + param2);
+    }
+
+</script>

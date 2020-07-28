@@ -1,0 +1,126 @@
+<?php
+
+use Fw\ViewHelper\FwCodes;
+
+$panelCode = new FwCodes\PanelCode();
+
+$panelCode->setCodeFile(__DIR__, '/files/block_1.txt');
+$panelCode->setInfo('bloqueia página');
+$panelCode->setButton('block-page');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/block_2.txt');
+$panelCode->setInfo('bloqueia página com mensagem');
+$panelCode->setButton('block-msg');
+echo $panelCode->render();
+
+$panelCode->setCodeFile(__DIR__, '/files/block_3.txt');
+$panelCode->setInfo('bloqueia página com percentual');
+$panelCode->setButton('block-per');
+echo $panelCode->render();
+
+$content = <<<HTML
+<hr>
+<div class="alert alert-info block-test">
+    div de teste<br>
+    div de teste<br>
+    div de teste<br>
+    div de teste<br>
+</div>         
+HTML;
+
+$panelCode->setCodeFile(__DIR__, '/files/block_4.txt');
+$panelCode->setInfo('bloqueia apenas uma div');
+$panelCode->setButton('block-div');
+$panelCode->setContent($content);
+echo $panelCode->render();
+
+?>
+<script>
+
+    $('.block-page').on('click', function (e)
+    {
+
+        e.preventDefault();
+
+        fwBlock();
+
+        window.setTimeout(function ()
+        { // como é um exemplo depois de 2s cancela o bloqueio
+            fwCloseBlock();
+        }, 1500);
+
+    });
+
+    $('.block-msg').on('click', function (e)
+    {
+
+        e.preventDefault();
+
+        fwBlock('... aguarde ...');
+
+        window.setTimeout(function ()
+        { // como é um exemplo depois de 2s cancela o bloqueio
+            fwCloseBlock();
+        }, 2000);
+
+    });
+
+    $('.block-per').on('click', function (e)
+    {
+
+        e.preventDefault();
+
+        fwBlock('... processando ...', 15);
+
+        // como é um exemplo abaixo esta as mudanças de % a cada segundo
+
+        window.setTimeout(function ()
+        {
+            $('.progress-bar-success').css('width', '45%');
+        }, 1000);
+
+        window.setTimeout(function ()
+        {
+            $('.progress-bar-success').css('width', '75%');
+        }, 2000);
+
+        window.setTimeout(function ()
+        {
+            fwCloseBlock();
+        }, 3000);
+
+    });
+
+    $('.block-div').on('click', function (e)
+    {
+
+        e.preventDefault();
+
+        fwBlock(null, null, '.block-test');
+
+        window.setTimeout(function ()
+        {
+            console.log('fwCloseBlock');
+            fwCloseBlock('.block-test');
+        }, 1000);
+
+    });
+
+    $('.block-close').on('click', function (e)
+    {
+
+        e.preventDefault();
+
+        fwCloseBlock();
+        fwCloseBlock('block-test');
+
+    });
+
+    function actionModalConfirm(param1, param2)
+    {
+        fwNotification('Se esta vendo esta mensagem é porque esta executando função js de callBack ...', 'info');
+        console.log('executando: ' + param1 + ' / ' + param2);
+    }
+
+</script>

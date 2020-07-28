@@ -1,0 +1,7 @@
+$buttons1 = new \Fw\ViewHelper\Widgets\FwButtons();
+$buttons1->setDropdownIcon();
+$buttons1->setId(1);
+$buttons1->addButtonDropdown('Editar', 'btn-test');
+$buttons1->addButtonDropdown('divider', '');
+$buttons1->addButtonDropdown('Imprimir', 'btn-test');
+$buttons1->addButtonDropdown('Excluir', 'btn-test');

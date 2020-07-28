@@ -1,0 +1,21 @@
+$data['date']     = \Fw\ViewHelper\FwFormatValue::getFormatToDateBr(date('Y-m-d'));
+$data['datetime'] = \Fw\ViewHelper\FwFormatValue::getFormatToDateTimeBr(date('Y-m-d H:i:s'));
+$data['phone_1']  = \Fw\ViewHelper\FwFormatValue::getFormatToPhone('483344556');
+$data['phone_2']  = \Fw\ViewHelper\FwFormatValue::getFormatToPhone('4833445566');
+$data['phone_3']  = \Fw\ViewHelper\FwFormatValue::getFormatToPhone('48334455668');
+$data['cpf']      = \Fw\ViewHelper\FwFormatValue::getFormatToCPForCNPJ('65792162042');
+$data['cnpj']     = \Fw\ViewHelper\FwFormatValue::getFormatToCPForCNPJ('32631382000148');
+$data['zipcode']  = \Fw\ViewHelper\FwFormatValue::getFormatToZipCode('88080100');
+$data['number']   = \Fw\ViewHelper\FwFormatValue::getFormatToNumber('1234.56');
+$data['money']    = \Fw\ViewHelper\FwFormatValue::getFormatToMoney('1234.56');
+
+date: 04/10/2019
+datetime: 04/10/2019 09:04:04
+phone_1: (48) 334-4556
+phone_2: (48) 3344-5566
+phone_3: (48) 3 3445-5668
+cpf: 657.921.620-42
+cnpj: 32.631.382/0001-48
+zipcode: 88080-100
+number: 1.234,56
+money: R$ 1.234,56

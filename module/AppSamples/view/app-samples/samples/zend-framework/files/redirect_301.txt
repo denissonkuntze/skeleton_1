@@ -1,0 +1,4 @@
+public function redirect301Action()
+{
+    return $this->redirect()->toUrl('http://www.google.com')->setStatusCode(301);
+}

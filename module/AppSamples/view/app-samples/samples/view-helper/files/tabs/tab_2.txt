@@ -1,0 +1,8 @@
+$tabs = new \Fw\ViewHelper\FwTabs('tabs_2');
+$tabs->setClassTypeVertical();
+$tabs->addTab('Informações', 'tab_info');
+$tabs->addTab('Conteúdo AJAX', 'tab_ajax', '/samples/view-helper/fw-tabs/?ajax=1');
+
+$tabs->setContent('tab_info', 'Conteúdo estático. ' . FwHelper::getDateHourNow(true));
+
+$html = $tabs->render();

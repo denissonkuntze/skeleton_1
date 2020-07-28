@@ -1,0 +1,129 @@
+<?php
+
+// SELECT 1
+
+$form = new \Fw\Lib\FwForm\FwForm();
+$form->setAttribute('class', 'form-search-exam');
+
+/* @var \Fw\ViewHelper\FwForm $formFw */
+
+$procedure = new \Fw\Lib\FwForm\ElementSearch('search1', '/samples/viewhelper/formsearch/', 'informe o nome');
+$procedure->setMinInputLenght(2);
+$procedure->setJsOnSelect('onSelect');
+$procedure->setJsTemplateResult('formatSearch');
+$procedure->setGridColumns(12)->startGridRow()->endGridRow();
+$form->addElement($procedure);
+
+$formFw = $this->ViewFwForm();
+$formFw->setForm($form);
+
+$HTML_FORM = $formFw->render();
+
+?>
+<div class="alert alert-info">
+    Busca o valor e seleciona o mesmo
+</div>
+<?= $HTML_FORM ?><br><br><br>
+
+<?php
+
+// SELECT 2
+
+$form = new \Fw\Lib\FwForm\FwForm();
+$form->setAttribute('class', 'form-search-exam');
+
+/* @var \Fw\ViewHelper\FwForm $formFw */
+
+$procedure = new \Fw\Lib\FwForm\ElementSearch('search2', '/samples/viewhelper/formsearch/', 'informe o nome');
+$procedure->setMinInputLenght(2);
+$procedure->setOnSelectClear();
+$procedure->setJsOnSelect('onSelect');
+$procedure->setJsTemplateResult('formatSearch');
+$procedure->setGridColumns(12)->startGridRow()->endGridRow();
+$form->addElement($procedure);
+
+$formFw = $this->ViewFwForm();
+$formFw->setForm($form);
+
+$HTML_FORM = $formFw->render();
+
+?>
+<div class="alert alert-info">
+    Busca o valor e depois se selecionar sera o mesmo
+</div>
+<?= $HTML_FORM ?><br><br><br>
+
+<?php
+
+// SELECT 3
+
+$form = new \Fw\Lib\FwForm\FwForm();
+$form->setAttribute('class', 'form-search-exam');
+
+/* @var \Fw\ViewHelper\FwForm $formFw */
+
+$procedure = new \Fw\Lib\FwForm\ElementSearch('search3', '/samples/viewhelper/formsearch/', 'informe o nome');
+$procedure->setMinInputLenght(2);
+$procedure->setOnSelectClear();
+$procedure->setAllowNewTerms();
+$procedure->setJsOnSelect('onSelectNewTerms');
+$procedure->setJsTemplateResult('formatSearch');
+$procedure->setGridColumns(12)->startGridRow()->endGridRow();
+$form->addElement($procedure);
+
+$formFw = $this->ViewFwForm();
+$formFw->setForm($form);
+
+$HTML_FORM = $formFw->render();
+
+?>
+<div class="alert alert-info">
+    Busca o valor, se não encontra da a opção de incluir o termo. depois de selecionar já abre novamente a busca
+</div>
+<?= $HTML_FORM ?>
+
+<script>
+
+    function onSelect(data)
+    {
+
+        console.log('valor selecionado: ' + data.name);
+
+    }
+
+    function onSelectNewTerms(data)
+    {
+
+        if (data.newOption) {
+            console.log('incluir valor: ' + data.text);
+        }
+        else {
+            console.log('selecionar valor: ' + data.name);
+        }
+
+        $('#search3').val(null).trigger('change');
+        $('#search3').select2('open');
+
+    }
+
+    function formatSearch(data)
+    {
+
+        //console.log('formatSearch');
+        //console.log(data);
+
+        if (data.loading) {
+            return 'buscando';
+        }
+
+        if (data.newOption && data.text !== undefined) {
+            return '<div class="row"><div class="col-md-8">Incluir <strong>' + data.text + '</strong></div><div class="col-md-4 text-right text-muted"></div></div>';
+        }
+
+        if (data.name !== undefined) {
+            return '<div class="row"><div class="col-md-8">' + data.name + '</div><div class="col-md-4 text-right text-muted">' + data.type + '</div></div>';
+        }
+
+    }
+
+</script>

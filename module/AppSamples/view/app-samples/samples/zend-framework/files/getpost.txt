@@ -1,0 +1,11 @@
+$this->request->isGet()
+$this->request->isPost()
+
+// pega os parametros enviados via POST
+if ($this->request->isPost()) {
+    $data = $this->request->getPost()->toArray();
+}
+
+//
+if ($this->getRequest()->isPost() AND isset($_POST['_FW'])) {
+}

@@ -1,0 +1,10 @@
+<?php
+
+$form = $this->form;
+$form->prepare();
+
+$form->setAttribute('action', 'formpost');
+$form->setAttribute('method', 'post');
+$form->setAttribute('class',  'form-class');
+
+echo $this->form()->render($form);
