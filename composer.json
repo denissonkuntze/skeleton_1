@@ -1,6 +1,6 @@
 {
-    "name": "LuneApps Skeleton 1",
-    "description": "Skeleton Application for Zend Framework zend-mvc applications",
+    "name": "denissonkuntze/skeleton_1",
+    "description": "Lune Skeleton 1 Application",
     "type": "project",
     "keywords": [
     ],
