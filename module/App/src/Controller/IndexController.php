@@ -2,34 +2,59 @@
 
 namespace App\Controller;
 
+use Fw\Lib\FwHelper;
+use Laminas\Stdlib\RequestInterface as Request;
+use Laminas\Stdlib\ResponseInterface as Response;
 use Laminas\View\Model\ViewModel;
 use Laminas\Mvc\Controller\AbstractActionController;
 
-class IndexController extends AbstractAuthActionController #class IndexController extends AbstractActionController
+class IndexController extends AbstractAppActionController
 {
+
+    public function dispatch(Request $request, Response $response = null)
+    {
+
+        $_ENV['IDC_SEARCH_IGNORE'] = true; // ignora a verificacao de subdomio
+        $_ENV['APP_AUTH_IGNORE']   = true; // desativa a verificacao de autenticacao
+
+        $this->verifyUrlWithSubdomain();
+
+        return parent::dispatch($request, $response);
+
+    }
+
+    private function verifyUrlWithSubdomain()
+    {
+
+        $fwApp = \Fw\Lib\FwApp::getInstance();
+
+        if ($fwApp->hasUrlSubdomainWidthIDC()) {
+
+            $urls = FwHelper::getAppURLs();
+            return $this->redirect()->toUrl($urls['URL_HOST']);
+
+        }
+
+    }
 
     public function indexAction()
     {
 
-        return new ViewModel();
+        return false;
 
     }
 
-    /**
-     * @Route("/cron/")
-     */
-    public function cronAction()
+    public function emptyAction()
     {
 
-        $contratsPeriods = new \App\Lib\SaasContracts\Periods();
-        $contratsPeriods->cronVerify();
+        $this->getLayout()->setLayoutDisable();
 
-        $contractsBills = new \App\Lib\SaasContracts\Bills();
-        $contractsBills->cronVerify();
+        if (APP_ENV == 'development') {
+            echo time();
+        }
 
-        echo date('Y-m-d');
-        die();
-
+        return false;
+        
     }
 
 }

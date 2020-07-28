@@ -10,9 +10,7 @@ class AuthController extends AbstractAuthActionController
 
     public function indexAction()
     {
-
-        return false;
-
+       return false;
     }
 
 }

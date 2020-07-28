@@ -8,7 +8,7 @@ use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\Stdlib\RequestInterface as Request;
 use Laminas\Stdlib\ResponseInterface as Response;
 
-abstract class AbstractAuthActionController extends AbstractActionController
+abstract class AbstractAuthActionController extends AbstractAppActionController
 {
 
     public function dispatch(Request $request, Response $response = null)
@@ -36,5 +36,13 @@ abstract class AbstractAuthActionController extends AbstractActionController
         return FwLayout::getInstance();
     }
 
+    protected function isFwPost(): bool
+    {
+        if ($this->getRequest()->isPost() AND isset($_POST['_FW'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
