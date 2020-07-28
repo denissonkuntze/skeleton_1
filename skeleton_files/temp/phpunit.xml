@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true"
+         bootstrap="vendor/autoload.php"
+
+         stderr="true"
+         verbose="false"
+
+         _convertErrorsToExceptions="true"
+         _convertNoticesToExceptions="true"
+         _convertWarningsToExceptions="true"
+         _processIsolation="false"
+         _stopOnFailure="false"
+         _syntaxCheck="false"
+         _backupGlobals="false"
+         _backupStaticAttributes="false"
+         _preserveGlobalState="false"
+         _runTestInSeparateProcess="true"
+
+         _strict="false"
+         beStrictAboutOutputDuringTests="true"
+
+    >
+    <testsuites>
+        <testsuite name="ZendSkeletonApplication Test Suite">
+            <directory>./module/Application/test</directory>
+            <directory>./module/Fw/test</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./module/Application/test/</directory>
+        </whitelist>
+    </filter>
+</phpunit>

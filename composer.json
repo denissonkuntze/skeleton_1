@@ -2,6 +2,7 @@
     "name": "denissonkuntze/skeleton_1",
     "description": "Lune Skeleton 1 Application",
     "type": "project",
+    "license": "BSD-3-Clause",
     "keywords": [
     ],
     "homepage": "http://lune.com.br/",
