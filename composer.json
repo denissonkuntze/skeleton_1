@@ -28,6 +28,7 @@
         "laminas/laminas-captcha": "2.9.x-dev",
         "laminas/laminas-development-mode": "^3.0",
         "laminas/laminas-dependency-plugin": "^1.0",
+        "laminas/laminas-form": "2.15.0",
         "aws/aws-sdk-php": "^3.52.25",
         "ext-json": "*",
         "ext-curl": "*"
