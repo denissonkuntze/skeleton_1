@@ -1,0 +1,56 @@
+version: 0.2
+
+  #env:
+  #variables:
+  # key: "value"
+  # key: "value"
+  #parameter-store:
+  # key: "value"
+# key: "value"
+#git-credential-helper: yes
+
+phases:
+  install:
+  #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+  #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+  #runtime-versions:
+  # name: version
+  # name: version
+    commands:
+     - npm install gulp-cli -g
+     - npm install --silent
+     - npm update npm -g
+     - npm install -g increase-memory-limit
+  pre_build:
+    commands:
+     #- echo `pwd`
+     - ls -l
+     - node -v
+     - npm -v
+     - gulp -v
+  build:
+    commands:
+     - increase-memory-limit
+     - gulp default --max_old_space_size=8192
+  post_build:
+    commands:
+     - rm -rf __*
+     - rm -rf temp
+     - rm -rf node_modules
+     - rm -rf module/Fw/docs
+     - rm -rf module/Fw/test
+     - rm -rf module/Fw/source.assets
+     - rm -rf module/App/docs
+     - rm -rf module/App/source.assets
+     - rm -rf module/AppBase
+     - rm -rf config/modules.config.php
+     - cp config/modules.config.production.php config/modules.config.php
+artifacts:
+  files:
+    - '**/*'
+    #name: $(date +%Y-%m-%d)
+    #discard-paths: yes
+    #base-directory: location
+    #cache:
+    #paths:
+    # - paths
